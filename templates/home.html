@@ -52,6 +52,10 @@
                     <h4 class="normal gray">{% filter upper %}{{ item['title'] }} | {{ item['location'] }}{% endfilter %}</h4>
                     <br/>
                     <p class="normal gray">{{ new_line_break(item['text'])|safe }}</p>
+                    <br/>
+                    {% for link in item['links'] %}
+                        <p class="normal link"><a href="{{ link['url'] }}">{{ link['name'] }}</a></p>
+                    {% endfor %}
                 </div>
             </div>
         {% endfor %}
