@@ -1,4 +1,5 @@
 var COLORS = ['#512DA8', '#303F9F', '#7B1FA2', '#D32F2F', '#388E3C', '#F57C00', '#5D4037'];
+var COLOR_TRANSITION_INTERVAL = 60;
 
 /**
  * Changes the header color and all link colors to a random color defined in COLORS.
@@ -92,8 +93,8 @@ $(window).load(function() {
         this.splash.fadeOut('fast');
     }.bind(this), 900);
 
-    // Initialize random cycling of theme colors every 30 seconds
-    cycleThemeColors(30);
+    // Initialize random cycling of theme colors every COLOR_TRANSITION_INTERVAL seconds
+    cycleThemeColors(COLOR_TRANSITION_INTERVAL);
 
     // Initialize event listeners
     this.aboutLink.on('click', handleSectionTransition.bind(this, this.about, this.aboutLink));

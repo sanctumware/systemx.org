@@ -34,7 +34,8 @@
             <div class="year light-gray">{{ current_date().year }}</div>
             <div class="description">
                 <h1 class="bold gray">ABOUT</h1>
-                <p class="normal gray">{{ new_line_break(data['about']['text'])|safe }}</p>
+                <br/>
+                <p class="normal gray link">{{ new_line_break(data['about']['text'])|safe }}</p>
             </div>
         </div>
     </div>
