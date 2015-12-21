@@ -26,25 +26,33 @@ function cycleThemeColors(seconds) {
  * @param newSectionLink The DOM element representing the link of the new section that should be displayed
  */
 function handleSectionTransition(newSection, newSectionLink) {
-    var removeSections = [this.about, this.experience, this.projects]
+    // Enumerate all sections and links to hide
+    var hideSections = [this.about, this.experience, this.projects]
         .filter(function(section) {
             return section !== newSection;
         });
-    var removeSectionLinks = [this.aboutLink, this.experienceLink, this.projectsLink]
+    var hideSectionLinks = [this.aboutLink, this.experienceLink, this.projectsLink]
         .filter(function(sectionLink) {
             return sectionLink !== newSectionLink;
         });
-    removeSections.forEach(function(section) {
+
+    // Hide the relevant sections
+    hideSections.forEach(function(section) {
         if (section.is(':visible')) {
             section.fadeOut(function() {
                 newSection.fadeIn();
             });
         }
     }.bind(this));
-    removeSectionLinks.forEach(function(sectionLink) {
+    // Remove the boldface from the sections to hide
+    hideSectionLinks.forEach(function(sectionLink) {
         sectionLink.removeClass('bold');
     });
+    // Boldface the new section
     newSectionLink.addClass('bold');
+
+    // Modify history state
+    history.pushState({}, "", newSection.prop('id'));
 }
 
 $(window).load(function() {
@@ -58,6 +66,23 @@ $(window).load(function() {
     this.experienceLink = $('#experience-link');
     this.projects = $('#projects');
     this.projectsLink = $('#projects-link');
+
+    // Handle history state, as necessary
+    // A little janky, but that's alright
+    var state = $('#state').data('state');
+    var stateSections = {
+        'about': this.about,
+        'experience': this.experience,
+        'projects': this.projects
+    };
+    var stateSectionLinks = {
+        'about': this.aboutLink,
+        'experience': this.experienceLink,
+        'projects': this.projectsLink
+    };
+    if (state !== 'None') {
+        handleSectionTransition(stateSections[state], stateSectionLinks[state]);
+    }
 
     // Set the theme color
     setRandomThemeColor();

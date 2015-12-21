@@ -9,8 +9,9 @@ data = json.load(open('data.json'))
 
 
 @app.route('/')
-def home():
-    return render_template('home.html', data=data)
+@app.route('/<path:action>')
+def home(action=None):
+    return render_template('home.html', data=dict(data.items() + [('action', action)]))
 
 
 @app.context_processor

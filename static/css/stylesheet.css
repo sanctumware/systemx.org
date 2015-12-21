@@ -63,10 +63,12 @@ h1, h2, h3, h4 {
 .nav-link a:link, .nav-link a:visited, .nav-link a:active {
     color: #F1F1F1;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .nav-link a:hover {
     border-bottom: 2px solid #F1F1F1;
+    cursor: pointer;
 }
 
 .link a:link, .link a:visited, .link a:active {
