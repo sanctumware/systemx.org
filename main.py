@@ -5,7 +5,7 @@ import json
 import datetime
 
 app = Flask(__name__)
-data = json.load(open('data.json'))
+data = json.load(open('/mnt/server/www/kevin-lin/main/data.json'))
 
 
 @app.route('/')
