@@ -2,9 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/stylesheet.css">
+    <link rel="stylesheet" href="../static/css/fonts.css">
     <title>kevin lin | rice university</title>
 </head>
 <body>
+    <div id="header">
+        <div class="header-content">
+            <div class="title-container">
+                <img class="box-logo" src="../static/img/square.png" />
+                <div class="title-text">
+                    <span class="bold">KEVIN</span><span class="light">LIN</span>
+                    <p class="subtitle bold">RICE UNIVERSITY '18, ELECTRICAL ENGINEERING AND COMPUTER SCIENCE</p>
+                    <div class="nav-bar normal nav-link">
+                        <a id="about-link" href="#about">ABOUT</a> / <a id="experience-link" href="#experience">INDUSTRY EXPERIENCE</a> / <a id="projects-link" href="#projects">PROJECTS</a> / <a id="github-link" href="https://github.com/LINKIWI">GITHUB</a> / <a id="resume-link" href="resume.pdf">RESUME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!--About-->
+    <div class="main-content">
+        <p class="normal gray">{{ new_line_break(data['about']['text'])|safe }}</p>
+    </div>
+
+    <!--Experience-->
+    <div class="main-content">
+        {% for item in data['industry_experience'] %}
+            <div class="item">
+                <div class="year light-gray">
+                    {{ item['year'] }}
+                </div>
+                <div class="description">
+                    <h1 class="bold gray">{% filter upper %}{{ item['company'] }}{% endfilter %}</h1>
+                    <h4 class="normal gray">{% filter upper %}{{ item['title'] }} | {{ item['location'] }}{% endfilter %}</h4>
+                    <br/>
+                    <p class="normal gray">{{ new_line_break(item['text'])|safe }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!--Projects-->
+    <div class="main-content">
+        {% for item in data['projects'] %}
+            <div class="item">
+                <div class="year light-gray">
+                    {{ item['year'] }}
+                </div>
+                <div class="description">
+                    <h1 class="bold gray">{% filter upper %}{{ item['title'] }}{% endfilter %}</h1>
+                    <br/>
+                    <p class="normal gray">{{ new_line_break(item['text'])|safe }}</p>
+                    <br/>
+                    {% for link in item['links'] %}
+                        <p class="normal link"><a href="{{ link['url'] }}">{{ link['name'] }}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
