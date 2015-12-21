@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'AktivGrotesk200';
+    src: url('../fonts/200normal.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AktivGrotesk500';
+    src: url('../fonts/500normal.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'AktivGrotesk700';
+    src: url('../fonts/700normal.woff') format('woff');
+}
+
+.gray {
+    color: #242424;
+}
+
+.light-gray {
+    color: #8A8A8A;
+}
+
+.light {
+    font-family: 'AktivGrotesk200', sans-serif;
+}
+
+.normal {
+    font-family: 'AktivGrotesk500', sans-serif;
+}
+
+.bold {
+    font-family: 'AktivGrotesk700', sans-serif;
+}
