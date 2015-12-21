@@ -21,7 +21,7 @@
                     <span class="bold">KEVIN</span><span class="light">LIN</span>
                     <p class="subtitle bold">RICE UNIVERSITY '18, ELECTRICAL ENGINEERING AND COMPUTER SCIENCE</p>
                     <div class="nav-bar normal nav-link">
-                        <a id="about-link" href="#about">ABOUT</a> / <a id="experience-link" href="#experience">INDUSTRY EXPERIENCE</a> / <a id="projects-link" href="#projects">PROJECTS</a> / <a id="github-link" href="https://github.com/LINKIWI">GITHUB</a> / <a id="resume-link" href="resume.pdf">RESUME</a>
+                        <a id="about-link" class="bold" href="#about">ABOUT</a> / <a id="experience-link" href="#experience">INDUSTRY EXPERIENCE</a> / <a id="projects-link" href="#projects">PROJECTS</a> / <a id="github-link" href="https://github.com/LINKIWI">GITHUB</a> / <a id="resume-link" href="resume.pdf">RESUME</a>
                     </div>
                 </div>
             </div>
@@ -29,12 +29,18 @@
     </div>
 
     <!--About-->
-    <div class="main-content">
-        <p class="normal gray">{{ new_line_break(data['about']['text'])|safe }}</p>
+    <div id="about" class="main-content">
+        <div class="item">
+            <div class="year light-gray">{{ current_date().year }}</div>
+            <div class="description">
+                <h1 class="bold gray">ABOUT</h1>
+                <p class="normal gray">{{ new_line_break(data['about']['text'])|safe }}</p>
+            </div>
+        </div>
     </div>
 
     <!--Experience-->
-    <div class="main-content">
+    <div id="experience" class="main-content hidden">
         {% for item in data['industry_experience'] %}
             <div class="item">
                 <div class="year light-gray">
@@ -51,7 +57,7 @@
     </div>
 
     <!--Projects-->
-    <div class="main-content">
+    <div id="projects" class="main-content hidden">
         {% for item in data['projects'] %}
             <div class="item">
                 <div class="year light-gray">
