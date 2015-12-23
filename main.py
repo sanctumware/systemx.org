@@ -1,17 +1,23 @@
 from flask import Flask
 from flask import render_template
 
+import os
 import json
 import datetime
 
 app = Flask(__name__)
-data = json.load(open('/mnt/server/www/kevin-lin/main/data.json'))
+data = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data.json')))
 
 
 @app.route('/')
 @app.route('/<path:action>')
 def home(action=None):
     return render_template('home.html', data=dict(data.items() + [('action', action)]))
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return app.send_static_file('img/favicon.ico')
 
 
 @app.context_processor

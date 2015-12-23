@@ -25,8 +25,10 @@ function cycleThemeColors(seconds) {
  *
  * @param newSection The DOM element representing the new section that should be displayed
  * @param newSectionLink The DOM element representing the link of the new section that should be displayed
+ * @param pushNewState True to push onto the history stack; false to leave it alone. This is required so that popstate
+ *                     events don't lead to pushing and popping the same event over and over again, preventing back-navigation
  */
-function handleSectionTransition(newSection, newSectionLink) {
+function handleSectionTransition(newSection, newSectionLink, pushNewState) {
     // Enumerate all sections and links to hide
     var hideSections = [this.about, this.experience, this.projects]
         .filter(function(section) {
@@ -53,7 +55,16 @@ function handleSectionTransition(newSection, newSectionLink) {
     newSectionLink.addClass('bold');
 
     // Modify history state
-    history.pushState({}, "", newSection.prop('id'));
+    if (pushNewState) {
+        history.pushState(
+            {
+                sectionState: newSection.prop('id'),
+                sectionLinkState: newSectionLink.data('section')
+            },
+            newSection.prop('id'),
+            newSection.prop('id')
+        );
+    }
 }
 
 $(window).load(function() {
@@ -82,7 +93,18 @@ $(window).load(function() {
         'projects': this.projectsLink
     };
     if (state !== 'None') {
+        // Case for refreshing the page when there is a predefined state
         handleSectionTransition(stateSections[state], stateSectionLinks[state]);
+    } else {
+        // Case when there isn't; in other words, display the default page and push that onto the history stack
+        history.pushState(
+        {
+            sectionState: 'about',
+            sectionLinkState: 'about'
+        },
+        'about',
+        'about'
+    );
     }
 
     // Set the theme color
@@ -97,7 +119,10 @@ $(window).load(function() {
     cycleThemeColors(COLOR_TRANSITION_INTERVAL);
 
     // Initialize event listeners
-    this.aboutLink.on('click', handleSectionTransition.bind(this, this.about, this.aboutLink));
-    this.experienceLink.on('click', handleSectionTransition.bind(this, this.experience, this.experienceLink));
-    this.projectsLink.on('click', handleSectionTransition.bind(this, this.projects, this.projectsLink));
+    this.aboutLink.on('click', handleSectionTransition.bind(this, this.about, this.aboutLink, true));
+    this.experienceLink.on('click', handleSectionTransition.bind(this, this.experience, this.experienceLink, true));
+    this.projectsLink.on('click', handleSectionTransition.bind(this, this.projects, this.projectsLink, true));
+    $(window).on('popstate', function() {
+        handleSectionTransition(stateSections[history.state.sectionState], stateSectionLinks[history.state.sectionLinkState], false);
+    }.bind(this));
 });
