@@ -92,20 +92,18 @@ $(window).load(function() {
         'experience': this.experienceLink,
         'projects': this.projectsLink
     };
-    if (state !== 'None') {
-        // Case for refreshing the page when there is a predefined state
+    var hasPredefinedState = state !== 'None';
+    if (hasPredefinedState) {
         handleSectionTransition(stateSections[state], stateSectionLinks[state]);
-    } else {
-        // Case when there isn't; in other words, display the default page and push that onto the history stack
-        history.pushState(
-        {
-            sectionState: 'about',
-            sectionLinkState: 'about'
-        },
-        'about',
-        'about'
-    );
     }
+    history.pushState(
+        {
+            sectionState: hasPredefinedState ? state : 'about',
+            sectionLinkState: hasPredefinedState ? state : 'about'
+        },
+        hasPredefinedState ? state : 'about',
+        hasPredefinedState ? state : 'about'
+    );
 
     // Set the theme color
     setRandomThemeColor();
@@ -123,6 +121,8 @@ $(window).load(function() {
     this.experienceLink.on('click', handleSectionTransition.bind(this, this.experience, this.experienceLink, true));
     this.projectsLink.on('click', handleSectionTransition.bind(this, this.projects, this.projectsLink, true));
     $(window).on('popstate', function() {
-        handleSectionTransition(stateSections[history.state.sectionState], stateSectionLinks[history.state.sectionLinkState], false);
+        if (history.state !== null) {
+            handleSectionTransition(stateSections[history.state.sectionState], stateSectionLinks[history.state.sectionLinkState], false);
+        }
     }.bind(this));
 });
