@@ -38,11 +38,11 @@
       "links": [
         {
           "name": "full paper",
-          "url": "http://kl38.web.rice.edu/cuda-computer-vision.pdf"
+          "url": "../static/pdf/cuda-computer-vision.pdf"
         },
         {
           "name": "poster",
-          "url": "http://kl38.web.rice.edu/cuda-computer-vision-poster.pdf"
+          "url": "../static/pdf/cuda-computer-vision-poster.pdf"
         },
         {
           "name": "github",
