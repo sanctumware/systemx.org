@@ -32,9 +32,28 @@
   ],
   "projects": [
     {
+      "title": "Modern Paste",
+      "year": "2016",
+      "text": "A powerful, open-source Pastebin alternative intended for self-hosted deployments. Modern Paste is a contemporary, Python-powered web application featuring functionality standard for a code/text sharing application, including user account integration, syntax highlighting, security restrictions and visibility control, and a RESTful API for programmatic integration into existing applications.",
+      "links": [
+        {
+          "name": "website",
+          "url": "https://www.modernpaste.com/"
+        },
+        {
+          "name": "demo",
+          "url": "https://demo.modernpaste.com/"
+        },
+        {
+          "name": "github",
+          "url": "https://github.com/LINKIWI/modern-paste"
+        }
+      ]
+    },
+    {
       "title": "GPU Acceleration of Edge-Based Motion Detection and Machine Learning-Aided Facial Recognition with NVIDIA CUDA",
       "year": "2015",
-      "text": "An exploration of GPU-CPU speedup achieved with parallelized edge detection, motion detection, and facial recognition algorithms with the NVIDIA CUDA framework",
+      "text": "An exploration of GPU-CPU speedup achieved with parallelized edge detection, motion detection, and facial recognition algorithms with the NVIDIA CUDA framework.",
       "links": [
         {
           "name": "full paper",
