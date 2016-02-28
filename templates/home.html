@@ -31,7 +31,7 @@
     <!--About-->
     <div id="about" class="main-content">
         <div class="item">
-            <div class="year light-gray">{{ current_date().year }}</div>
+            <div class="year light light-gray">{{ current_date().year }}</div>
             <div class="description">
                 <h1 class="bold gray">ABOUT</h1>
                 <br/>
@@ -44,7 +44,7 @@
     <div id="experience" class="main-content hidden">
         {% for item in data['industry_experience'] %}
             <div class="item">
-                <div class="year light-gray">
+                <div class="year light light-gray">
                     {{ item['year'] }}
                 </div>
                 <div class="description">
@@ -65,7 +65,7 @@
     <div id="projects" class="main-content hidden">
         {% for item in data['projects'] %}
             <div class="item">
-                <div class="year light-gray">
+                <div class="year light light-gray">
                     {{ item['year'] }}
                 </div>
                 <div class="description">
