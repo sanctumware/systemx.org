@@ -3,12 +3,12 @@
 .dark-link a:link,
 .dark-link a:visited,
 .dark-link a:active {
-  color: $gray-10;
+  color: $blue;
   text-decoration: none;
 }
 
 .dark-link a:hover {
-  border-bottom: 2px solid $gray-10;
+  border-bottom: 2px solid $blue;
 }
 
 .dark-link-alt a:link,
@@ -19,18 +19,18 @@
 }
 
 .dark-link-alt a:hover {
-  border-bottom: 2px solid $gray-90;
+  border-bottom: 2px solid $gray-10;
 }
 
 .light-link a:link,
 .light-link a:visited,
 .light-link a:active {
-  color: $gray-90;
+  color: $blue;
   text-decoration: none;
 }
 
 .light-link a:hover {
-  border-bottom: 2px solid $gray-90;
+  border-bottom: 2px solid $blue;
 }
 
 .icon-link a:link,
