@@ -26,6 +26,7 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-helmet": "^3.1.0",
+    "react-responsive": "^1.1.4",
     "react-router": "^2.6.1",
     "xtend": "^4.0.1"
   },
