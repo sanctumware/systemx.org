@@ -1,0 +1,86 @@
+@import 'colors';
+
+@font-face {
+  font-family: 'montserrat-light';
+  src: url('/static/fonts/montserrat-light.otf');
+}
+
+@font-face {
+  font-family: 'montserrat-regular';
+  src: url('/static/fonts/montserrat-regular.otf');
+}
+
+@font-face {
+  font-family: 'montserrat-semibold';
+  src: url('/static/fonts/montserrat-semibold.otf');
+}
+
+@font-face {
+  font-family: 'montserrat-bold';
+  src: url('/static/fonts/montserrat-bold.otf');
+}
+
+@font-face {
+  font-family: 'inconsolata-regular';
+  src: url('/static/fonts/inconsolata-regular.ttf');
+}
+
+@font-face {
+  font-family: 'inconsolata-bold';
+  src: url('/static/fonts/inconsolata-bold.ttf');
+}
+
+.sans-serif {
+  color: $gray-80;
+  font-family: montserrat-regular, sans-serif;
+  letter-spacing: .05em;
+
+  &.light {
+    font-family: montserrat-regular, sans-serif;
+  }
+
+  &.semibold {
+    font-family: montserrat-semibold, sans-serif;
+  }
+
+  &.bold {
+    font-family: montserrat-bold, sans-serif;
+  }
+}
+
+.monospace {
+  color: $gray-80;
+  font-family: inconsolata-regular, monospace;
+
+  &.bold {
+    font-family: inconsolata-bold, monospace;
+  }
+}
+
+.alpha {
+  font-size: 60px;
+}
+
+.beta {
+  font-size: 54px;
+}
+
+.delta {
+  font-size: 36px;
+}
+
+.epsilon {
+  font-size: 24px;
+}
+
+.gamma {
+  font-size: 18px;
+}
+
+.iota {
+  font-size: 14px;
+}
+
+.kilo {
+  font-size: 10px;
+}
