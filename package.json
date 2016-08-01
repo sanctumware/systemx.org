@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run build-css && npm run build-js",
-    "build-js": "mkdir -p dist && ./node_modules/.bin/webpack --config config/webpack.js",
+    "build-js": "mkdir -p dist && webpack --config config/webpack.js",
     "build-css": "mkdir -p dist && sass --style compressed src/client/styles/main.scss:dist/main.css",
-    "build-js-watch": "mkdir -p dist && ./node_modules/.bin/webpack --config config/webpack.js --watch --colors",
+    "build-js-watch": "mkdir -p dist && webpack --config config/webpack.js --watch --colors",
     "build-css-watch": "mkdir -p dist && sass --watch --style compressed src/client/styles/main.scss:dist/main.css",
     "start": "node index.js",
     "lint": "eslint .",

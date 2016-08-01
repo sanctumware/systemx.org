@@ -1,12 +1,13 @@
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import {IndexRedirect, Route} from 'react-router';
 
 import AppRoot from './components/app-root';
-import Container from './components/container';
+import About from './components/about';
 
 export default (
   <Route path="/" component={AppRoot}>
-    <IndexRoute component={Container} />
-    <Route path="*" component={Container} />
+    <IndexRedirect to="/about" />
+    <Route path="/about" component={About} />
+    <Route path="*" component={About} />
   </Route>
 )
