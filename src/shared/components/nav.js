@@ -1,86 +1,143 @@
-import {Link} from 'react-router';
+import {browserHistory, Link} from 'react-router';
+import MediaQuery from 'react-responsive';
 import React from 'react';
+import xtend from 'xtend';
 
+import {DESKTOP_MEDIA_QUERY, COMPACT_MEDIA_QUERY, ULTRA_COMPACT_MEDIA_QUERY} from '../util/media-query';
 import Logo from './logo';
 
 export default class Nav extends React.Component {
+  static propTypes = {
+    selectedNav: React.PropTypes.string
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedNav: 'about'
+      isLogoMouseOver: false
     }
   }
 
   classNameForSelected(nav) {
-    if (this.state.selectedNav === nav) {
+    if (this.props.selectedNav === nav) {
       return 'monospace bold gamma text-gray-10';
     }
     return 'monospace gamma text-gray-30'
   }
 
-  setSelectedNav(nav) {
-    this.setState({
-      selectedNav: nav
-    });
+  setLogoMouseOver(isLogoMouseOver) {
+    this.setState({isLogoMouseOver});
+  }
+
+  renderLogoBlock(style) {
+    return (
+      <div
+        className="margin-large--right"
+        style={xtend({
+          cursor: 'pointer'
+        }, style)}
+        onClick={() => {
+          browserHistory.push('/');
+        }}
+        onMouseOver={() => {
+          this.setLogoMouseOver(true)
+        }}
+        onMouseOut={() => {
+          this.setLogoMouseOver(false)
+        }}
+      >
+        <Logo className={`margin--right transition ${this.state.isLogoMouseOver ? 'bg-blue' : ''}`} style={{
+          display: 'inline-block'
+        }} />
+        <p className={`sans-serif text-gray-10 gamma transition ${this.state.isLogoMouseOver ? 'text-blue' : ''}`} style={{
+          display: 'inline-block'
+        }}>KEVIN LIN</p>
+        <br />
+      </div>
+    );
+  }
+
+  renderNavLinks(renderVertically, style) {
+    return (
+      <div className="dark-link-alt" style={xtend({
+        marginTop: renderVertically ? 80 : 0
+      }, style)}>
+        {
+          [
+            'about',
+            'experience',
+            'projects',
+            'blog',
+            'resume'
+          ].map((link) => (
+            <div key={`${link}_link`} className={renderVertically ? 'margin-small--bottom' : 'margin-small--right'} style={{
+              display: renderVertically ? 'inherit' : 'inline-block'
+            }}>
+              <Link to={`/${link}`} className={this.classNameForSelected(link)} >
+                /{link}
+              </Link>
+            </div>
+          ))
+        }
+      </div>
+    );
+  }
+
+  renderNavFooter() {
+    return (
+      <div className="monospace kilo text-gray-30 dark-link-alt" style={{
+        position: 'fixed',
+        left: 0,
+        bottom: 0,
+        margin: '36px 56px'
+      }}>
+        <p className="margin-tiny--bottom">
+          built with <a href="https://github.com/facebook/react">react</a>
+        </p>
+        <p>
+          source on <a href="https://github.com/LINKIWI/kevinlin.info">github</a>
+        </p>
+      </div>
+    );
   }
 
   render() {
     return (
-      <div className="bg-gray-90" style={{
-        width: '35%',
-        minWidth: 300,
-        height: '100vh',
-        padding: '36px 56px',
-        float: 'left',
-        display: 'inline-block'
-      }}>
-        <Logo className="margin--right" style={{
-          display: 'inline-block'
-        }} />
-        <p className="sans-serif text-gray-10 gamma" style={{
-          display: 'inline-block'
-        }}>KEVIN LIN</p>
-        <br />
+      <div>
+        <MediaQuery query={DESKTOP_MEDIA_QUERY}>
+          <div className="bg-gray-90" style={{
+            width: '35%',
+            minWidth: 300,
+            height: '100vh',
+            padding: '0 56px',
+            float: 'left',
+            display: 'inline-block'
+          }}>
+            {this.renderLogoBlock({marginTop: 36})}
+            {this.renderNavLinks(true)}
+            {this.renderNavFooter()}
+          </div>
+        </MediaQuery>
 
-        <div className="dark-link" style={{
-          marginTop: 80
-        }}>
-          <div className="margin-small--bottom">
-            <Link to="/about" className={this.classNameForSelected('about')} onClick={() => this.setSelectedNav('about')}>
-              /about
-            </Link>
+        <MediaQuery query={COMPACT_MEDIA_QUERY}>
+          <div className="bg-gray-90" style={{
+            width: '100%',
+            padding: '24px 0'
+          }}>
+            {this.renderLogoBlock({display: 'inline-block', marginLeft: 36})}
+            {this.renderNavLinks(false, {display: 'inline-block'})}
           </div>
-          <div className="margin-small--bottom">
-            <Link to="/experience" className={this.classNameForSelected('experience')} onClick={() => this.setSelectedNav('experience')}>
-              /experience
-            </Link>
-          </div>
-          <div className="margin-small--bottom">
-            <Link to="/projects" className={this.classNameForSelected('projects')} onClick={() => this.setSelectedNav('projects')}>
-              /projects
-            </Link>
-          </div>
-          <div className="margin-small--bottom">
-            <Link to="/resume.pdf" className={this.classNameForSelected('resume')} onClick={() => this.setSelectedNav('resume')}>
-              /resume.pdf
-            </Link>
-          </div>
-        </div>
+        </MediaQuery>
 
-        <div className="dark-link" style={{
-          position: 'fixed',
-          left: 0,
-          bottom: 0,
-          margin: '36px 56px'
-        }}>
-          <p className="monospace iota text-gray-30 margin-tiny--bottom">
-            built with <a href="https://github.com/facebook/react">react</a>
-          </p>
-          <p className="monospace iota text-gray-30">
-            source on <a href="https://github.com/LINKIWI/kevinlin.info">github</a>
-          </p>
-        </div>
+        <MediaQuery query={ULTRA_COMPACT_MEDIA_QUERY}>
+          <div className="bg-gray-90" style={{
+            width: '100%',
+            padding: '24px 0'
+          }}>
+            {this.renderNavLinks(false, {display: 'inline-block', marginLeft: 36})}
+          </div>
+        </MediaQuery>
       </div>
     );
   }

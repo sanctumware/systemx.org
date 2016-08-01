@@ -1,25 +1,28 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import data from '../../data';
 import Nav from './nav';
 
 export default class About extends React.Component {
   render() {
     return (
       <div>
-        <Helmet title={'kevin lin'} />
-        <Nav />
-        <div style={{
-          display: 'inline-block',
-          padding: '56px 76px'
+        <Helmet title={'about - kevin lin - rice university'} />
+        <Nav selectedNav={'about'} />
+        <div className="monospace iota" style={{
+          display: 'table-cell',
+          verticalAlign: 'middle',
+          height: '100vh',
+          padding: '0 76px'
         }}>
-          <p className="sans-serif regular text-gray-80 delta margin--bottom">
-            ABOUT
-          </p>
-
-          <p className="monospace">
-            TODO
-          </p>
+          {
+            data.about.map((line, idx) => (
+              <p key={`${idx}_line`} className="margin--bottom light-link" dangerouslySetInnerHTML={{
+                __html: line
+              }} />
+            ))
+          }
         </div>
       </div>
     );
