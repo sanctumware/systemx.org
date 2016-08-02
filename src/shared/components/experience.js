@@ -5,9 +5,14 @@ import data from '../../data';
 import Nav from './nav';
 
 export default class Experience extends React.Component {
-  renderSection(item, idx, arr) {
+  renderSection(item, idx) {
+    let className = 'monospace light-link text-gray-80 margin-large--bottom';
+    if (idx === 0) {
+      className += ' margin-large--top';
+    }
+
     return (
-      <div key={`${idx}_item`} className={`monospace light-link text-gray-80 ${idx === arr.length - 1 ? '' : 'margin-large--bottom'}`}>
+      <div key={`${idx}_item`} className={className}>
         <p className="monospace bold">
           # {item.title.toLowerCase()}
         </p>
@@ -41,7 +46,7 @@ export default class Experience extends React.Component {
             display: 'table-cell',
             height: '100vh',
             verticalAlign: 'middle',
-            padding: '56px 76px',
+            padding: '0 76px',
             marginTop: '56px'
           }}>
             {data.experience.map(this.renderSection)}

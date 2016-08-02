@@ -68,7 +68,7 @@ export default class Nav extends React.Component {
             'about',
             'experience',
             'projects',
-            'blog',
+            'stats',
             'resume'
           ].map((link) => (
             <div key={`${link}_link`} className={renderVertically ? 'margin-small--bottom' : 'margin-small--right'} style={{
