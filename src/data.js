@@ -12,7 +12,7 @@ const data = {
       comment: 'the web platform team owns internal tooling and infrastructure surrounding node.js-based react-redux applications to support other product-facing web engineers at uber.',
       description: [
         'scaled the backend infrastructure of uber\'s internal npm registry by backing it with a fast, persistent, and searchable Elasticsearch index',
-        'built a frontend interface for the private registry similar to <a href="https://registry.npmjs.org">registry.npmjs.org</a> that was tightly integrated into uber\'s other internal tools',
+        'built a frontend interface for the private registry similar to <a href="https://npmjs.org">npmjs.org</a> that was tightly integrated into uber\'s other internal tools',
         'rearchitected components of the private registry and internal package ecosystem to support open sourcing react components used internally as part of uber\'s web ui library',
         'designed and implemented a statistics aggregator for internal and external web applications, along with a frontend interface that served as a team health dashboard'
       ]
