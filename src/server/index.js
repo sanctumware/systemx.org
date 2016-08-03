@@ -49,6 +49,9 @@ app.post('/api/get-private-contributions', parseForm, csrfProtection, getPrivate
 app.post('/api/get-misc-stats', parseForm, csrfProtection, getMiscStats);
 
 /* View endpoints */
+app.get('/resume.pdf', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/static/pdf/kevin-lin-resume.pdf'));
+});
 app.get('*', csrfProtection, (req, res) => {
   res.render(path.resolve(__dirname, '../client/index'), {csrfToken: req.csrfToken()});
 });

@@ -4,6 +4,7 @@ import React from 'react';
 import xtend from 'xtend';
 
 import {DESKTOP_MEDIA_QUERY, COMPACT_MEDIA_QUERY, ULTRA_COMPACT_MEDIA_QUERY} from '../util/media-query';
+import DisplayUtil from '../util/display';
 import Logo from './logo';
 
 export default class Nav extends React.Component {
@@ -16,6 +17,19 @@ export default class Nav extends React.Component {
 
     this.state = {
       isLogoMouseOver: false
+    }
+  }
+
+  colorForSelectedNav() {
+    switch (this.props.selectedNav) {
+      case 'experience':
+        return '#1D2936';
+      case 'projects':
+        return '#0D4023';
+      case 'stats':
+        return '#4F1711';
+      default:
+        return '#191919';
     }
   }
 
@@ -69,14 +83,22 @@ export default class Nav extends React.Component {
             'experience',
             'projects',
             'stats',
-            'resume'
+            'resume.pdf'
           ].map((link) => (
             <div key={`${link}_link`} className={renderVertically ? 'margin-small--bottom' : 'margin-small--right'} style={{
               display: renderVertically ? 'inherit' : 'inline-block'
             }}>
-              <Link to={`/${link}`} className={this.classNameForSelected(link)} >
-                /{link}
-              </Link>
+              {
+                DisplayUtil.displayIf(link.indexOf('.') === -1, () => (
+                  <Link to={`/${link}`} className={this.classNameForSelected(link)}>
+                    /{link}
+                  </Link>
+                ), () => (
+                  <a href={`/${link}`} className={this.classNameForSelected(link)}>
+                    /{link}
+                  </a>
+                ))
+              }
             </div>
           ))
         }
@@ -106,7 +128,8 @@ export default class Nav extends React.Component {
     return (
       <div>
         <MediaQuery query={DESKTOP_MEDIA_QUERY}>
-          <div className="bg-gray-90" style={{
+          <div style={{
+            backgroundColor: this.colorForSelectedNav(),
             width: '35%',
             minWidth: 300,
             height: '100vh',
@@ -121,7 +144,8 @@ export default class Nav extends React.Component {
         </MediaQuery>
 
         <MediaQuery query={COMPACT_MEDIA_QUERY}>
-          <div className="bg-gray-90" style={{
+          <div style={{
+            backgroundColor: this.colorForSelectedNav(),
             width: '100%',
             padding: '24px 0'
           }}>
@@ -131,7 +155,8 @@ export default class Nav extends React.Component {
         </MediaQuery>
 
         <MediaQuery query={ULTRA_COMPACT_MEDIA_QUERY}>
-          <div className="bg-gray-90" style={{
+          <div style={{
+            backgroundColor: this.colorForSelectedNav(),
             width: '100%',
             padding: '24px 0'
           }}>
