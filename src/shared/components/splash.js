@@ -7,36 +7,67 @@ export default class Splash extends React.Component {
     super(props);
 
     this.state = {
-      opacity: 1
+      showSplash: true,
+      showSplashContents: true,
+      showText: false
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        opacity: 0
+        showSplash: false
+      });
+    }, 2200);
+    setTimeout(() => {
+      this.setState({
+        showSplashContents: false
       });
     }, 2000);
+    setTimeout(() => {
+      this.setState({
+        showText: true
+      });
+    }, 1000);
   }
 
   render() {
+    const {showSplash, showSplashContents, showText} = this.state;
+
     return (
       <div className="bg-gray-90 transition" style={{
         width: '100%',
         height: '100vh',
         position: 'fixed',
-        opacity: this.state.opacity,
+        opacity: showSplash ? 1 : 0,
         pointerEvents: 'none',
         zIndex: 100
       }}>
-        <Logo scale={2} className="pulse" style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          display: this.state.opacity === 1 ? 'inherit' : 'none'
-        }} />
+        <div style={{
+          display: showSplashContents ? 'inherit' : 'none'
+        }}>
+          <Logo scale={2} className="pulse transition" style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            marginLeft: showText ? '-80px' : 0
+          }} />
+          <div style={{
+            opacity: showText ? 1 : 0
+          }}>
+            <p className="sans-serif text-gray-10 epsilon pulse transition" style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginRight: '-50%',
+              transform: 'translate(-50%, -50%)',
+              marginTop: '25px',
+              marginLeft: showText ? '30px' : 0
+            }}>KEVIN LIN</p>
+          </div>
+        </div>
       </div>
     );
   }
