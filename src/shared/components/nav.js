@@ -112,7 +112,8 @@ export default class Nav extends React.Component {
         position: 'fixed',
         left: 0,
         bottom: 0,
-        margin: '36px 56px'
+        margin: '36px 56px',
+        zIndex: 1
       }}>
         <p className="margin-tiny--bottom">
           built with <a href="https://github.com/facebook/react">react</a>
