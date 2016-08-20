@@ -11,7 +11,7 @@ var commonConfig = {
   app: {
     name: 'kevin-lin',
     title: 'kevin lin',
-    port: 4000
+    port: 18400
   }
 };
 
