@@ -11,7 +11,7 @@
     "build-css-watch": "mkdir -p dist && sass --watch --style compressed src/client/styles/main.scss:dist/main.css",
     "build-test": "mkdir -p dist-test && webpack --config config/webpack-test.js",
     "start": "node index.js",
-    "lint": "eslint .",
+    "lint": "eslint src test",
     "test": "npm run build && npm run lint && build-test && node dist-test"
   },
   "repository": {
@@ -51,6 +51,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.3.1",
+    "eslint-config-uber-jsx": "^2.0.0",
     "eslint-plugin-react": "^6.1.2",
     "webpack": "^1.13.1"
   }

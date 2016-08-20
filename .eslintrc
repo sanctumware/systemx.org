@@ -9,5 +9,8 @@
       "jsx": true,
       "modules": true
     }
-  }
+  },
+  "extends": [
+    "eslint-config-uber-jsx"
+  ]
 }
