@@ -35,7 +35,6 @@ const getPrivateContributions = (req, res) => {
     }
   }, (err, results) => {
     if (err) {
-      console.error(err);
       return res.end(JSON.stringify({}));
     }
     const projectsData = JSON.parse(results.projects);

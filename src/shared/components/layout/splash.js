@@ -1,3 +1,5 @@
+/* global setTimeout */
+
 import React from 'react';
 
 import Logo from './logo';

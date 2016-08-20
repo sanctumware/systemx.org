@@ -17,7 +17,7 @@ export default class Nav extends React.Component {
 
     this.state = {
       isLogoMouseOver: false
-    }
+    };
   }
 
   colorForSelectedNav() {
@@ -37,7 +37,7 @@ export default class Nav extends React.Component {
     if (this.props.selectedNav === nav) {
       return 'monospace bold gamma text-gray-10';
     }
-    return 'monospace gamma text-gray-30'
+    return 'monospace gamma text-gray-30';
   }
 
   setLogoMouseOver(isLogoMouseOver) {
@@ -55,18 +55,23 @@ export default class Nav extends React.Component {
           browserHistory.push('/');
         }}
         onMouseOver={() => {
-          this.setLogoMouseOver(true)
+          this.setLogoMouseOver(true);
         }}
         onMouseOut={() => {
-          this.setLogoMouseOver(false)
+          this.setLogoMouseOver(false);
         }}
       >
         <Logo className={`margin--right transition ${this.state.isLogoMouseOver ? 'bg-blue' : ''}`} style={{
           display: 'inline-block'
         }} />
-        <p className={`sans-serif text-gray-10 gamma transition ${this.state.isLogoMouseOver ? 'text-blue' : ''}`} style={{
-          display: 'inline-block'
-        }}>KEVIN LIN</p>
+        <p
+          className={`sans-serif text-gray-10 gamma transition ${this.state.isLogoMouseOver ? 'text-blue' : ''}`}
+          style={{
+            display: 'inline-block'
+          }}
+        >
+          KEVIN LIN
+        </p>
         <br />
       </div>
     );
@@ -85,9 +90,13 @@ export default class Nav extends React.Component {
             'stats',
             'resume.pdf'
           ].map((link) => (
-            <div key={`${link}_link`} className={renderVertically ? 'margin-small--bottom' : 'margin-small--right'} style={{
-              display: renderVertically ? 'inherit' : 'inline-block'
-            }}>
+            <div
+              key={`${link}_link`}
+              className={renderVertically ? 'margin-small--bottom' : 'margin-small--right'}
+              style={{
+                display: renderVertically ? 'inherit' : 'inline-block'
+              }}
+            >
               {
                 DisplayUtil.displayIf(link.indexOf('.') === -1, () => (
                   <Link to={`/${link}`} className={this.classNameForSelected(link)}>

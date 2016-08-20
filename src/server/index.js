@@ -1,3 +1,5 @@
+/* eslint-disable no-console,no-process-env,no-undef */
+
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
@@ -38,7 +40,7 @@ app.use((err, req, res, next) => {
 
   res.status(403);
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
+  return res.send(JSON.stringify({
     error: 'Unauthorized'
   }));
 });

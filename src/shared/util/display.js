@@ -3,12 +3,16 @@ export default class DisplayUtil {
    * Display the element only if the condition is met.
    *
    * @param {Boolean} condition Boolean condition that evaluates to true to display; false otherwise.
-   * @param {Function} elementIfCondition A zero-argument lambda function that returns the element to render if the condition is true.
-   * @param {Function=} elementElseCondition A zero-argument lambda function that returns the element to render if the condition is false.
+   * @param {Function} elementIfCondition A zero-argument lambda function that returns the element to render if the
+   *                                      condition is true.
+   * @param {Function=} elementElseCondition A zero-argument lambda function that returns the element to render if the
+   *                    condition is false.
    * @returns {Object} The output of element() or undefined, depending on condition.
    */
   static displayIf(condition, elementIfCondition, elementElseCondition) {
-    return condition ? elementIfCondition() : (DisplayUtil.isDefined(elementElseCondition) ? elementElseCondition() : undefined);
+    return condition ?
+      elementIfCondition() :
+      (DisplayUtil.isDefined(elementElseCondition) ? elementElseCondition() : undefined);
   }
 
   /**

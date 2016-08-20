@@ -1,3 +1,5 @@
+/* global document */
+
 import dottie from 'dottie';
 import humanize from 'humanize';
 import Preloader, {ICON_TYPE} from 'react-preloader-icon';
@@ -29,6 +31,23 @@ export default class Stats extends React.Component {
     };
   }
 
+  componentDidMount() {
+    [
+      {
+        endpoint: '/api/get-public-contributions',
+        key: 'publicContributions'
+      },
+      {
+        endpoint: '/api/get-private-contributions',
+        key: 'privateContributions'
+      },
+      {
+        endpoint: '/api/get-misc-stats',
+        key: 'miscStats'
+      }
+    ].forEach((requestMetadata) => this.apiRequest(requestMetadata.endpoint, requestMetadata.key));
+  }
+
   apiRequest(endpoint, key) {
     const csrfToken = document.getElementById('csrf-token').innerHTML;
 
@@ -52,23 +71,6 @@ export default class Stats extends React.Component {
         }
       }));
     });
-  }
-
-  componentDidMount() {
-    [
-      {
-        endpoint: '/api/get-public-contributions',
-        key: 'publicContributions'
-      },
-      {
-        endpoint: '/api/get-private-contributions',
-        key: 'privateContributions'
-      },
-      {
-        endpoint: '/api/get-misc-stats',
-        key: 'miscStats'
-      }
-    ].forEach((requestMetadata) => this.apiRequest(requestMetadata.endpoint, requestMetadata.key));
   }
 
   render() {
@@ -118,7 +120,10 @@ export default class Stats extends React.Component {
                     <span className="monospace bold">
                       &nbsp;{humanize.relativeTime(publicContributionsData.lastActivity || 0)}&nbsp;
                     </span>
-                    about repository <a href={`https://github.com/${publicContributionsData.lastActivityRepo}`}>{publicContributionsData.lastActivityRepo}</a>
+                    about repository
+                    <a href={`https://github.com/${publicContributionsData.lastActivityRepo}`}>
+                      {publicContributionsData.lastActivityRepo}
+                    </a>
                   </p>
                   <p className="margin-tiny--bottom">
                     +
@@ -136,7 +141,10 @@ export default class Stats extends React.Component {
                     <span className="monospace bold">
                       &nbsp;{publicContributionsData.numStarred || 0}&nbsp;
                     </span>
-                    <a href="https://github.com/stars/LINKIWI">starred</a> github repositories (most recently, <a href={`https://github.com/${publicContributionsData.mostRecentStarred}`}>{publicContributionsData.mostRecentStarred}</a>)
+                    <a href="https://github.com/stars/LINKIWI">starred</a> github repositories (most recently,
+                    <a href={`https://github.com/${publicContributionsData.mostRecentStarred}`}>
+                      {publicContributionsData.mostRecentStarred}
+                    </a>)
                   </p>
                 </div>
               ))

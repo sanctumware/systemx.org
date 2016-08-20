@@ -4,7 +4,8 @@ export default class ArrayUtil {
    * which maps an index in the new array to an arbitrary element.
    *
    * @param {Number} length Length of the new array.
-   * @param {Function} creationFunc Function taking one argument, the index of the array, and returns the element to insert at that index.
+   * @param {Function} creationFunc Function taking one argument, the index of the array, and returns the element to
+   *                                insert at that index.
    * @returns {Array} The newly generated array.
    */
   static generateArray(length, creationFunc) {

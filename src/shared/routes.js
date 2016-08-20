@@ -16,4 +16,4 @@ export default (
     <Route path="/stats" component={Stats} />
     <Route path="*" component={About} />
   </Route>
-)
+);

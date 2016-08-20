@@ -23,9 +23,9 @@ export default class Experience extends React.Component {
           *{item.comment.toLowerCase()}*
         </p>
         {
-          item.description.map((item, idx) => (
-            <p key={`${idx}_bullet`} className="text-gray-80" dangerouslySetInnerHTML={{
-              __html: `+ ${item}`
+          item.description.map((descriptionItem, descriptionIdx) => (
+            <p key={`${descriptionIdx}_bullet`} className="text-gray-80" dangerouslySetInnerHTML={{
+              __html: `+ ${descriptionItem}`
             }} />
           ))
         }

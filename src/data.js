@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const data = {
   about: [
     'i\'m going into my third year studying electrical and computer engineering + computer science at rice university, houston. i\'m a native of the west coast; i grew up in los angeles.',
@@ -148,5 +149,6 @@ const data = {
     }
   ]
 };
+/* eslint-enable max-len */
 
 export default data;

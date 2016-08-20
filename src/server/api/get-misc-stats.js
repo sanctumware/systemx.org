@@ -15,7 +15,6 @@ const readFile = (filePath) => {
   try {
     return JSON.parse(fs.readFileSync(filePath));
   } catch (err) {
-    console.error(err);
     return {};
   }
 };
@@ -34,11 +33,11 @@ const getMiscStats = (req, res) => {
     }
   }, (err, results) => {
     if (err) {
-      console.error(err);
       return res.end(JSON.stringify({}));
     }
 
-    const messagesLastDay = results.fbMessages.filter((message) => message.timestamp >= Date.now() - 24 * 60 * 60 * 1000);
+    const messagesLastDay = results.fbMessages
+      .filter((message) => message.timestamp >= Date.now() - 24 * 60 * 60 * 1000);
 
     return res.end(JSON.stringify({
       numMessagesLastDay: messagesLastDay.length,
