@@ -1,5 +1,5 @@
 var path = require('path');
-var webpack = require("webpack");
+var webpack = require('webpack');
 
 var plugins = [];
 if (process.env.NODE_ENV === 'production') {

@@ -9,9 +9,10 @@
     "build-css": "mkdir -p dist && sass --style compressed src/client/styles/main.scss:dist/main.css",
     "build-js-watch": "mkdir -p dist && webpack --config config/webpack.js --watch --colors",
     "build-css-watch": "mkdir -p dist && sass --watch --style compressed src/client/styles/main.scss:dist/main.css",
+    "build-test": "mkdir -p dist-test && webpack --config config/webpack-test.js",
     "start": "node index.js",
     "lint": "eslint .",
-    "test": "npm run build && npm run lint && node test"
+    "test": "npm run build && npm run lint && build-test && node dist-test"
   },
   "repository": {
     "type": "git",
