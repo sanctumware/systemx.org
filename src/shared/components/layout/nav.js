@@ -3,8 +3,8 @@ import MediaQuery from 'react-responsive';
 import React from 'react';
 import xtend from 'xtend';
 
-import {DESKTOP_MEDIA_QUERY, COMPACT_MEDIA_QUERY, ULTRA_COMPACT_MEDIA_QUERY} from '../util/media-query';
-import DisplayUtil from '../util/display';
+import {DESKTOP_MEDIA_QUERY, COMPACT_MEDIA_QUERY, ULTRA_COMPACT_MEDIA_QUERY} from '../../util/media-query';
+import DisplayUtil from '../../util/display';
 import Logo from './logo';
 
 export default class Nav extends React.Component {

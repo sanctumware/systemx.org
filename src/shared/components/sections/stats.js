@@ -6,8 +6,8 @@ import request from 'browser-request';
 import Helmet from 'react-helmet';
 import xtend from 'xtend';
 
-import DisplayUtil from '../util/display';
-import Nav from './nav';
+import DisplayUtil from '../../util/display';
+import Nav from '../layout/nav';
 
 export default class Stats extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Splash from './splash';
+import Splash from './layout/splash';
 
 export default class AppRoot extends React.Component {
   render() {

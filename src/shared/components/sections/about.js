@@ -1,8 +1,8 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import data from '../../data';
-import Nav from './nav';
+import data from '../../../data';
+import Nav from '../layout/nav';
 
 export default class About extends React.Component {
   render() {

@@ -2,10 +2,10 @@ import React from 'react';
 import {IndexRedirect, Route} from 'react-router';
 
 import AppRoot from './components/app-root';
-import About from './components/about';
-import Experience from './components/experience';
-import Projects from './components/projects';
-import Stats from './components/stats';
+import About from './components/sections/about';
+import Experience from './components/sections/experience';
+import Projects from './components/sections/projects';
+import Stats from './components/sections/stats';
 
 export default (
   <Route path="/" component={AppRoot}>
