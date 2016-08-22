@@ -1,4 +1,4 @@
-var xtend = require('xtend');
+var extend = require('deep-extend');
 
 var developmentConfig = require('./development');
 var productionConfig = require('./production');
@@ -15,6 +15,6 @@ var commonConfig = {
   }
 };
 
-var config = xtend(commonConfig, process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig);
+var config = extend(commonConfig, process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig);
 
 module.exports = config;
