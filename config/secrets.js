@@ -1,4 +1,4 @@
-var secrets = {
+const secrets = {
   githubAccessToken: '',
   gitlabPrivateToken: '',
   jenkinsAPIUser: '',
@@ -7,4 +7,4 @@ var secrets = {
   fbUserID: ''
 };
 
-module.exports = secrets;
+export default secrets;

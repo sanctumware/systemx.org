@@ -2,8 +2,8 @@
  * Configuration option specific to a development environment.
  * The values of these fields will override those in the common options, if they clash.
  */
-var developmentConfig = {
+const developmentConfig = {
 
 };
 
-module.exports = developmentConfig;
+export default developmentConfig;

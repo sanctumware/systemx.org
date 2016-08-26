@@ -1,12 +1,12 @@
-var extend = require('deep-extend');
+import extend from 'deep-extend';
 
-var developmentConfig = require('./development');
-var productionConfig = require('./production');
+import developmentConfig from './development';
+import productionConfig from './production';
 
 /**
  * Configuration options common to all environments.
  */
-var commonConfig = {
+const commonConfig = {
   // Application properties
   app: {
     name: 'kevin-lin',
@@ -15,6 +15,6 @@ var commonConfig = {
   }
 };
 
-var config = extend(commonConfig, process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig);
+const config = extend(commonConfig, process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig);
 
-module.exports = config;
+export default config;
