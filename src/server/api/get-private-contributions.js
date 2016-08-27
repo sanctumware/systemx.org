@@ -37,14 +37,18 @@ const getPrivateContributions = (req, res) => {
     if (err) {
       return res.end(JSON.stringify({}));
     }
+
     const projectsData = JSON.parse(results.projects);
+    const jenkinsData = results.jenkins.sort((a, b) => {
+      return new Date(b.published).getTime() - new Date(a.published).getTime();
+    });
 
     return res.end(JSON.stringify({
       numRepos: projectsData.length,
       lastActivity: new Date(projectsData[0].last_activity_at).getTime() / 1000,
       lastActivityRepo: dottie.get(projectsData[0], 'path_with_namespace', ''),
-      lastBuild: dottie.get(results.jenkins[0], 'title', ''),
-      lastBuildTime: new Date(dottie.get(results.jenkins[0], 'published')).getTime() / 1000
+      lastBuild: dottie.get(jenkinsData[0], 'title', ''),
+      lastBuildTime: new Date(dottie.get(jenkinsData[0], 'published')).getTime() / 1000
     }));
   });
 };
