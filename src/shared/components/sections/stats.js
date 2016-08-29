@@ -120,7 +120,7 @@ export default class Stats extends React.Component {
                     <span className="monospace bold">
                       &nbsp;{humanize.relativeTime(publicContributionsData.lastActivity || 0)}&nbsp;
                     </span>
-                    about repository
+                    about repository&nbsp;
                     <a href={`https://github.com/${publicContributionsData.lastActivityRepo}`}>
                       {publicContributionsData.lastActivityRepo}
                     </a>
@@ -141,7 +141,7 @@ export default class Stats extends React.Component {
                     <span className="monospace bold">
                       &nbsp;{publicContributionsData.numStarred || 0}&nbsp;
                     </span>
-                    <a href="https://github.com/stars/LINKIWI">starred</a> github repositories (most recently,
+                    <a href="https://github.com/stars/LINKIWI">starred</a> github repositories (most recently,&nbsp;
                     <a href={`https://github.com/${publicContributionsData.mostRecentStarred}`}>
                       {publicContributionsData.mostRecentStarred}
                     </a>)
