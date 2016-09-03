@@ -44,6 +44,10 @@ export default class Stats extends React.Component {
       {
         endpoint: '/api/get-misc-stats',
         key: 'miscStats'
+      },
+      {
+        endpoint: '/api/get-productivity-stats',
+        key: 'productivityStats'
       }
     ].forEach((requestMetadata) => this.apiRequest(requestMetadata.endpoint, requestMetadata.key));
   }
@@ -77,6 +81,7 @@ export default class Stats extends React.Component {
     const publicContributionsData = dottie.get(this.state, 'publicContributions.data', {});
     const privateContributionsData = dottie.get(this.state, 'privateContributions.data', {});
     const miscData = dottie.get(this.state, 'miscStats.data', {});
+    const productivityStats = dottie.get(this.state, 'productivityStats.data', {});
 
     return (
       <div>
@@ -190,6 +195,46 @@ export default class Stats extends React.Component {
                     for job
                     <span className="monospace bold">
                       &nbsp;{privateContributionsData.lastBuild || ''}&nbsp;
+                    </span>
+                  </p>
+                </div>
+              ))
+            }
+
+            <p className="monospace bold margin--top margin-small--bottom">
+              # productivity
+            </p>
+            {
+              DisplayUtil.displayIf(dottie.get(this.state, 'productivityStats.isLoading', true), () => (
+                <Preloader
+                  type={ICON_TYPE.OVAL}
+                  size={25}
+                  strokeWidth={6}
+                  strokeColor="#006064"
+                  duration={800}
+                  className="margin-tiny-top margin-tiny--bottom"
+                />
+              ), () => (
+                <div className="light-link">
+                  <p className="margin-tiny--bottom">
+                    +
+                    <span className="monospace bold">
+                      &nbsp;{productivityStats.numCreatedTasksLastWeek || 0}&nbsp;
+                    </span>
+                    asana tasks created in the last week
+                  </p>
+                  <p className="margin-tiny--bottom">
+                    + latest task is
+                    <span className="monospace bold">
+                      &nbsp;{productivityStats.mostRecentTask.name}
+                    </span>
+                    , created
+                    <span className="monospace bold">
+                      &nbsp;{humanize.relativeTime(productivityStats.mostRecentTask.timestamp)}&nbsp;
+                    </span>
+                    and is currently
+                    <span className="monospace bold">
+                      &nbsp;{productivityStats.mostRecentTask.isCompleted ? 'complete' : 'incomplete'}&nbsp;
                     </span>
                   </p>
                 </div>

@@ -12,6 +12,7 @@ import config from '../../config/common';
 import getPublicContributions from './api/get-public-contributions';
 import getPrivateContributions from './api/get-private-contributions';
 import getMiscStats from './api/get-misc-stats';
+import getProductivityStats from './api/get-productivity-stats';
 
 const app = Express();
 
@@ -49,6 +50,7 @@ app.use((err, req, res, next) => {
 app.post('/api/get-public-contributions', parseForm, csrfProtection, getPublicContributions);
 app.post('/api/get-private-contributions', parseForm, csrfProtection, getPrivateContributions);
 app.post('/api/get-misc-stats', parseForm, csrfProtection, getMiscStats);
+app.post('/api/get-productivity-stats', parseForm, csrfProtection, getProductivityStats);
 
 /* View endpoints */
 app.get('/resume.pdf', (req, res) => {
