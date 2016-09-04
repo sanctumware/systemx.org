@@ -31,7 +31,7 @@ const getPublicContributions = (req, res) => {
     },
     starred: (finished) => {
       request.get({
-        url: `https://LINKIWI:${secrets.githubAccessToken}@api.github.com/users/LINKIWI/starred`,
+        url: `https://LINKIWI:${secrets.githubAccessToken}@api.github.com/users/LINKIWI/starred?per_page=1000`,
         headers: DEFAULT_HEADERS
       }, (err, resp, body) => finished(err, body));
     }
