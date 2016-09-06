@@ -221,14 +221,14 @@ export default class Stats extends React.Component {
                     <span className="monospace bold">
                       &nbsp;{productivityStats.numCreatedTasksLastWeek || 0}&nbsp;
                     </span>
-                    asana tasks created in the last week
+                    asana tasks created in the last week,
+                    <span className="monospace bold">
+                      &nbsp;{productivityStats.numCompletedTasksLastWeek || 0}&nbsp;
+                    </span>
+                    of which are completed
                   </p>
                   <p className="margin-tiny--bottom">
-                    + latest task is
-                    <span className="monospace bold">
-                      &nbsp;{productivityStats.mostRecentTask.name}
-                    </span>
-                    , created
+                    + latest task was created
                     <span className="monospace bold">
                       &nbsp;{humanize.relativeTime(productivityStats.mostRecentTask.timestamp)}&nbsp;
                     </span>

@@ -1,6 +1,7 @@
 import asana from 'asana';
 import async from 'async';
 import dottie from 'dottie';
+import omit from 'just-omit';
 
 import secrets from '../../../config/secrets';
 
@@ -39,10 +40,14 @@ const getProductivityStats = (req, res) => {
       isCompleted: dottie.get(taskDetails, 'completed', true)
     })).sort((a, b) => b.timestamp - a.timestamp);
 
+    const createdTasksLastWeek = recentTasks
+        .filter((task) => task.timestamp >= new Date().getTime() / 1000 - 7 * 24 * 60 * 60);
+    const completedTasksLastWeek = createdTasksLastWeek.filter((task) => task.isCompleted);
+
     return res.end(JSON.stringify({
-      numCreatedTasksLastWeek: recentTasks
-        .filter((task) => task.timestamp >= new Date().getTime() / 1000 - 7 * 24 * 60 * 60).length,
-      mostRecentTask: recentTasks[0]
+      numCreatedTasksLastWeek: createdTasksLastWeek.length,
+      numCompletedTasksLastWeek: completedTasksLastWeek.length,
+      mostRecentTask: omit(recentTasks[0], 'name')
     }));
   });
 };

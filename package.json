@@ -34,6 +34,7 @@
     "feed-read": "0.0.1",
     "humanize": "0.0.9",
     "just-last": "^1.1.23",
+    "just-omit": "^1.0.1",
     "pug": "^2.0.0-beta4",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
