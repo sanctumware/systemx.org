@@ -225,7 +225,7 @@ export default class Stats extends React.Component {
                     <span className="monospace bold">
                       &nbsp;{productivityStats.numCompletedTasksLastWeek || 0}&nbsp;
                     </span>
-                    of which are completed
+                    of which are complete
                   </p>
                   <p className="margin-tiny--bottom">
                     + latest task was created
