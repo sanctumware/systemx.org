@@ -4,7 +4,7 @@ const data = {
     'i\'m going into my third year studying electrical and computer engineering + computer science at rice university, houston. i\'m a native of the west coast; i grew up in los angeles.',
     'i do web. i work at all levels of the stack, from maintaining linux servers to architecting backend systems to designing and building user interfaces.',
     'most recently an engineering intern at uber in san francisco, where i worked on building internal tooling and infrastructure to support web development within the engineering org.',
-    'find me on <a href="https://github.com/LINKIWI">github</a>, <a href="https://twitter.com/LINKIWI_">twitter</a>, or my <a href="https://blog.kevinlin.info">blog</a>.'
+    'find me on <a href="https://github.com/LINKIWI">github</a>, <a href="https://stackoverflow.com/users/5224313/linkiwi">stackoverflow</a>, <a href="https://twitter.com/LINKIWI_">twitter</a>, or my <a href="https://blog.kevinlin.info">blog</a>.'
   ],
   experience: [
     {
