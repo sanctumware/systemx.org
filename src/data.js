@@ -50,6 +50,21 @@ const data = {
       ]
     },
     {
+      title: 'Detrail',
+      subtitle: '2016 | command line | node',
+      description: 'A flexible command line utility for fixing trailing whitespace in source files',
+      links: [
+        {
+          text: 'npmjs.org',
+          url: 'https://www.npmjs.com/package/detrail'
+        },
+        {
+          text: 'github',
+          url: 'https://github.com/LINKIWI/detrail'
+        }
+      ]
+    },
+    {
       title: 'GPU Acceleration of Edge-Based Motion Detection and Machine Learning-Aided Facial Recognition with NVIDIA CUDA',
       subtitle: '2015 | two-dimensional signal processing | c, opencv, nvidia cuda',
       description: 'An exploration of GPU-CPU speedup achieved with parallelized edge detection, motion detection, and facial recognition algorithms with the NVIDIA CUDA framework.',
