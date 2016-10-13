@@ -1,7 +1,8 @@
 import async from 'async';
-import feed from 'feed-read';
 import dottie from 'dottie';
+import feed from 'feed-read';
 import request from 'request';
+import safeParse from 'safe-json-parse/tuple';
 
 import secrets from '../../../config/secrets';
 
@@ -14,14 +15,34 @@ import secrets from '../../../config/secrets';
 const getPrivateContributions = (req, res) => {
   async.parallel({
     projects: (finished) => {
-      request.get({
-        url: 'https://git.kevinlin.info/api/v3/projects/all',
-        qs: {
-          private_token: secrets.gitlabPrivateToken,
-          order_by: 'last_activity_at',
-          per_page: 10000
+      function projectsForPage(page, cb) {
+        request.get({
+          url: 'https://git.kevinlin.info/api/v3/projects/all',
+          qs: {
+            private_token: secrets.gitlabPrivateToken,
+            order_by: 'last_activity_at',
+            per_page: 100,
+            page: page
+          }
+        }, (err, resp, body) => cb(err, body));
+      }
+
+      let currentPage = 1;
+      let projects = [];
+
+      function onPagination(paginateErr, paginateProjects) {
+        const parsed = safeParse(paginateProjects);
+
+        if (!parsed[1].length || paginateErr || parsed[0]) {
+          return finished(paginateErr, projects);
         }
-      }, (err, resp, body) => finished(err, body));
+
+        projects = projects.concat(parsed[1]);
+        currentPage++;
+        return projectsForPage(currentPage, onPagination);
+      }
+
+      return projectsForPage(currentPage, onPagination);
     },
     jenkins: (finished) => {
       request.get({
@@ -38,7 +59,7 @@ const getPrivateContributions = (req, res) => {
       return res.end(JSON.stringify({}));
     }
 
-    const projectsData = JSON.parse(results.projects);
+    const projectsData = results.projects;
     const jenkinsData = results.jenkins.sort((a, b) => {
       return new Date(b.published).getTime() - new Date(a.published).getTime();
     });
