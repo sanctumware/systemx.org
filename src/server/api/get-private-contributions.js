@@ -19,10 +19,12 @@ const getPrivateContributions = (req, res) => {
         request.get({
           url: 'https://git.kevinlin.info/api/v3/projects/all',
           qs: {
+            /* eslint-disable camelcase */
             private_token: secrets.gitlabPrivateToken,
             order_by: 'last_activity_at',
             per_page: 100,
             page: page
+            /* eslint-enable camelcase */
           }
         }, (err, resp, body) => cb(err, body));
       }

@@ -3,4 +3,4 @@
 import App from '../../shared';
 import {render} from 'react-dom';
 
-render(new App().render(), document.getElementById('app'));
+render(new App(), document.getElementById('app'));
