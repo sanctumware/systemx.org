@@ -1,18 +1,26 @@
 /* eslint-disable max-len */
 const data = {
   about: [
-    'i\'m going into my third year studying electrical and computer engineering + computer science at rice university, houston. i\'m a native of the west coast; i grew up in los angeles.',
+    'i\'m a third year undergraduate studying electrical and computer engineering + computer science at rice university, houston. i\'m a native of the west coast; i grew up in los angeles.',
     'i do web. i work at all levels of the stack, from maintaining linux servers to architecting backend systems to designing and building user interfaces.',
-    'most recently an engineering intern at uber in san francisco, where i worked on building internal tooling and infrastructure to support web development within the engineering org.',
+    'excited to join <a href="https://engineering.pinterest.com">pinterest</a> in san francisco next summer as an engineering intern on a core infrastructure team. most recently an engineering intern at <a href="https://uber.com">uber</a>, where i worked on building internal tooling and infrastructure to support web development within the engineering org.',
     'find me on <a href="https://github.com/LINKIWI">github</a>, <a href="https://stackoverflow.com/users/5224313/linkiwi">stackoverflow</a>, <a href="https://twitter.com/LINKIWI_">twitter</a>, or my <a href="https://blog.kevinlin.info">blog</a>.'
   ],
   experience: [
+    {
+      title: 'pinterest | software engineering intern',
+      subtitle: 'summer 2017 | san francisco, ca',
+      comment: 'expected to join a backend core infrastructure team',
+      'description': [
+        'starting summer 2017'
+      ]
+    },
     {
       title: 'uber | software engineering intern',
       subtitle: 'summer 2016 | web platform team | san francisco, ca',
       comment: 'the web platform team owns internal tooling and infrastructure surrounding node.js-based react-redux applications to support other product-facing web engineers at uber.',
       description: [
-        'scaled the backend infrastructure of uber\'s internal npm registry by backing it with a fast, persistent, and searchable Elasticsearch index',
+        'scaled the backend infrastructure of uber\'s internal npm registry by backing it with a fast, persistent, and searchable elasticsearch index',
         'built a frontend interface for the private registry similar to <a href="https://npmjs.org">npmjs.org</a> that was tightly integrated into uber\'s other internal tools',
         'rearchitected components of the private registry and internal package ecosystem to support open sourcing react components used internally as part of uber\'s web ui library',
         'designed and implemented a statistics aggregator for internal and external web applications, along with a frontend interface that served as a team health dashboard'
