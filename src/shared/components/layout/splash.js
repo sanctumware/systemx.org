@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import Backdrop from './backdrop';
 import Logo from './logo';
 
 export default class Splash extends React.Component {
@@ -9,68 +10,52 @@ export default class Splash extends React.Component {
     super(props);
 
     this.state = {
-      showSplash: true,
       showSplashContents: true,
-      showText: false
+      showBackdrop: true
     };
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        showSplash: false
-      });
-    }, 2200);
+    // Hide the logo block
     setTimeout(() => {
       this.setState({
         showSplashContents: false
       });
-    }, 2000);
+    }, 800);
+
+    // Hide the backdrop
     setTimeout(() => {
       this.setState({
-        showText: true
+        showBackdrop: false
       });
-    }, 1000);
+    }, 1200);
   }
 
   render() {
-    const {showSplash, showSplashContents, showText} = this.state;
+    const {showBackdrop, showSplashContents} = this.state;
 
     return (
-      <div className="bg-gray-90 transition" style={{
-        width: '100%',
-        height: '100vh',
-        position: 'fixed',
-        opacity: showSplash ? 1 : 0,
-        pointerEvents: 'none',
-        zIndex: 100
-      }}>
-        <div style={{
-          display: showSplashContents ? 'inherit' : 'none'
+      <Backdrop opacity={showBackdrop ? 1 : 0}>
+        <div className="splash-logo-block transition" style={{
+          opacity: showSplashContents ? 1 : 0
         }}>
-          <Logo scale={2} className="pulse transition" style={{
+          <Logo scale={2} className="transition" style={{
             position: 'absolute',
             top: '50%',
             left: '50%',
-            marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-            marginLeft: showText ? '-80px' : 0
+            marginLeft: '-100px'
           }} />
-          <div style={{
-            opacity: showText ? 1 : 0
-          }}>
-            <p className="sans-serif text-gray-10 epsilon pulse transition" style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              marginRight: '-50%',
-              transform: 'translate(-50%, -50%)',
-              marginTop: '25px',
-              marginLeft: showText ? '30px' : 0
-            }}>KEVIN LIN</p>
-          </div>
+          <p className="sans-serif text-gray-10 epsilon transition" style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            marginTop: '25px',
+            marginLeft: '20px'
+          }}>KEVIN LIN</p>
         </div>
-      </div>
+      </Backdrop>
     );
   }
 }
