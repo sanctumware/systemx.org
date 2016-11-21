@@ -1,11 +1,10 @@
-import asana from 'asana';
 import async from 'async';
-import dottie from 'dottie';
-import omit from 'just-omit';
+import Trello from 'node-trello';
 
 import secrets from '../../../config/secrets';
 
-const client = asana.Client.create().useAccessToken(secrets.asanaAccessToken);
+const HOMEWORK_BOARD_ID = '160nUEdk';
+const client = new Trello(secrets.trelloAPIKey, secrets.trelloAPIToken);
 
 /**
  * Get productivity statistics.
@@ -14,41 +13,36 @@ const client = asana.Client.create().useAccessToken(secrets.asanaAccessToken);
  * @param {Object} res Express response object
  */
 const getProductivityStats = (req, res) => {
-  async.parallel({
-    asana: (finished) => {
-      client.projects.tasks(16792280658010)
-        .then((resp) => {
-          const taskQueryTasks = resp.data
-            .map((task) => task.id)
-            .filter(Boolean)
-            .slice(0, 20)
-            .map((taskID) => (taskFinished) => {
-              client.tasks.findById(taskID)
-                .then((details) => taskFinished(null, details));
-            });
-          return async.parallel(taskQueryTasks, finished);
-        });
-    }
-  }, (err, results) => {
-    if (err) {
-      return res.end(JSON.stringify({}));
+  // First, get all the ID of the backlog, in progress, and done lists
+  return client.get(`/1/boards/${HOMEWORK_BOARD_ID}/lists`, (boardErr, lists) => {
+    if (boardErr) {
+      return res.send(JSON.stringify({}));
     }
 
-    const recentTasks = results.asana.map((taskDetails) => ({
-      timestamp: new Date(dottie.get(taskDetails, 'created_at', '')).getTime() / 1000,
-      name: dottie.get(taskDetails, 'name', ''),
-      isCompleted: dottie.get(taskDetails, 'completed', true)
-    })).sort((a, b) => b.timestamp - a.timestamp);
+    // Determine the list IDs associated with each stage
+    const backlogID = lists.find((list) => list.name.toLowerCase() === 'backlog').id;
+    const inProgressID = lists.find((list) => list.name.toLowerCase() === 'in progress').id;
+    const inReviewID = lists.find((list) => list.name.toLowerCase() === 'in review').id;
+    const doneID = lists.find((list) => list.name.toLowerCase() === 'done').id;
 
-    const createdTasksLastWeek = recentTasks
-        .filter((task) => task.timestamp >= new Date().getTime() / 1000 - 7 * 24 * 60 * 60);
-    const completedTasksLastWeek = createdTasksLastWeek.filter((task) => task.isCompleted);
+    // Fetch the cards associated with each of the lists
+    return async.parallel({
+      backlog: (finished) => client.get(`/1/lists/${backlogID}/cards`, finished),
+      inProgress: (finished) => client.get(`/1/lists/${inProgressID}/cards`, finished),
+      inReview: (finished) => client.get(`/1/lists/${inReviewID}/cards`, finished),
+      done: (finished) => client.get(`/1/lists/${doneID}/cards`, finished)
+    }, (cardsErr, cards) => {
+      if (cardsErr) {
+        return res.send(JSON.stringify({}));
+      }
 
-    return res.end(JSON.stringify({
-      numCreatedTasksLastWeek: createdTasksLastWeek.length,
-      numCompletedTasksLastWeek: completedTasksLastWeek.length,
-      mostRecentTask: omit(recentTasks[0], 'name')
-    }));
+      return res.end(JSON.stringify({
+        numBacklog: cards.backlog.length,
+        // For public display, combine "In Progress" and "In Review" into a single category
+        numInProgress: cards.inProgress.length + cards.inReview.length,
+        numDone: cards.done.length
+      }));
+    });
   });
 };
 

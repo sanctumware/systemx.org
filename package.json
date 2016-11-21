@@ -21,7 +21,6 @@
   "author": "Kevin Lin <developer@kevinlin.info>",
   "license": "MIT",
   "dependencies": {
-    "asana": "^0.14.1",
     "async": "^2.0.1",
     "babel-core": "^6.11.4",
     "body-parser": "^1.15.2",
@@ -35,6 +34,7 @@
     "humanize": "0.0.9",
     "just-last": "^1.1.23",
     "just-omit": "^1.0.1",
+    "node-trello": "^1.1.2",
     "pug": "^2.0.0-beta4",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",

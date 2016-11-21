@@ -219,23 +219,20 @@ export default class Stats extends React.Component {
                   <p className="margin-tiny--bottom">
                     +
                     <span className="monospace bold">
-                      &nbsp;{productivityStats.numCreatedTasksLastWeek || 0}&nbsp;
+                      &nbsp;{productivityStats.numBacklog || 0}&nbsp;
                     </span>
-                    asana tasks created in the last week,
+                    trello {productivityStats.numBacklog === 1 ? 'task' : 'tasks'} in backlog,
                     <span className="monospace bold">
-                      &nbsp;{productivityStats.numCompletedTasksLastWeek || 0}&nbsp;
+                      &nbsp;{productivityStats.numInProgress || 0}&nbsp;
                     </span>
-                    of which are complete
+                    in progress
                   </p>
                   <p className="margin-tiny--bottom">
-                    + latest task was created
+                    +
                     <span className="monospace bold">
-                      &nbsp;{humanize.relativeTime(productivityStats.mostRecentTask.timestamp)}&nbsp;
+                      &nbsp;{productivityStats.numDone || 0}&nbsp;
                     </span>
-                    and is currently
-                    <span className="monospace bold">
-                      &nbsp;{productivityStats.mostRecentTask.isCompleted ? 'complete' : 'incomplete'}&nbsp;
-                    </span>
+                    total completed tasks
                   </p>
                 </div>
               ))
