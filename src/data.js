@@ -58,6 +58,25 @@ const data = {
       ]
     },
     {
+      title: 'Apache Auth',
+      subtitle: '2016 | web | node, express, react, apache2',
+      description: 'Frontend for a flexible, transparent, and application/stack-agnostic single sign-on (SSO) implementation for arbitrary Apache virtual hosts. apache-auth sits transparently between the client and the underlying application, serving as an intermediary authentication layer that distributes and validates HTTP session cookies.',
+      links: [
+        {
+          text: 'demo',
+          url: 'https://auth.kevinlin.info'
+        },
+        {
+          text: 'github',
+          url: 'https://github.com/LINKIWI/apache-auth'
+        },
+        {
+          text: 'blog post',
+          url: 'https://blog.kevinlin.info/transparent-application-agnostic-sso-using-apache-mod_auth_form'
+        }
+      ]
+    },
+    {
       title: 'Detrail',
       subtitle: '2016 | command line | node',
       description: 'A flexible command line utility for fixing trailing whitespace in source files',
