@@ -5,16 +5,20 @@ import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
 import path from 'path';
 import Express from 'express';
+import raven from 'raven';
 
 import config from '../../config/common';
+import secrets from '../../config/secrets';
 
-/* API methods */
 import getPublicContributions from './api/get-public-contributions';
 import getPrivateContributions from './api/get-private-contributions';
 import getMiscStats from './api/get-misc-stats';
 import getProductivityStats from './api/get-productivity-stats';
 
+/* Initialization */
 const app = Express();
+const sentryClient = new raven.Client(secrets.sentryDSN);
+sentryClient.patchGlobal();
 
 /* CSRF middleware */
 const csrfProtection = csrf({cookie: true});
@@ -28,6 +32,7 @@ app.use('/static', Express.static(path.resolve(__dirname, '../client/static')));
 app.use('/dist', Express.static(path.resolve(__dirname, '../../dist')));
 
 /* Express middleware */
+app.use(raven.middleware.express.requestHandler(secrets.sentryDSN));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -59,6 +64,8 @@ app.get('/resume.pdf', (req, res) => {
 app.get('*', csrfProtection, (req, res) => {
   res.render(path.resolve(__dirname, '../client/index'), {csrfToken: req.csrfToken()});
 });
+
+app.use(raven.middleware.express.errorHandler(secrets.sentryDSN));
 
 const server = app.listen(process.env.PORT || config.app.port || 3000, () => {
   var port = server.address().port;
