@@ -77,6 +77,78 @@ const data = {
       ]
     },
     {
+      title: 'Allu',
+      subtitle: '2016 | web | node, express, facebook messenger platform',
+      description: 'Allu is a Facebook Messenger-based notifications dispatcher built with Node.js on top of the Messenger Platform API for chat bots. Allu is intended to be an API platform for devices and backend systems to emit notifications, esp. for continuous integration/deployment build failures, uncaught exceptions in applications running in production environments, or service health check failures.',
+      links: [
+        {
+          text: 'live service',
+          url: 'https://allu.internal.kevinlin.info'
+        },
+        {
+          text: 'github / server',
+          url: 'https://github.com/LINKIWI/allu'
+        },
+        {
+          text: 'github / node and cli client',
+          url: 'https://github.com/LINKIWI/allu-client'
+        }
+      ]
+    },
+    {
+      title: 'brick pop solver',
+      subtitle: '2016 | android | python, opencv, adb',
+      description: 'An automated solver for the Brick Pop Facebook Messenger game. The solver parses a screenshot of the board, generates a step-by-step game solution by simulating gameplay, and replays the solution on a physical android device with ADB touch events. The solver makes use of a parallelized depth-first search algorithm.',
+      links: [
+        {
+          text: 'github',
+          url: 'https://github.com/LINKIWI/brick-pop-solver'
+        },
+        {
+          text: 'blog post',
+          url: 'https://blog.kevinlin.info/building-an-automated-solver-for-facebook-messengers-brick-pop/'
+        },
+        {
+          text: 'video demo',
+          url: 'https://www.youtube.com/watch?v=DVQx-ObS9I0'
+        },
+        {
+          text: 'projects by others inspired by brick-pop-solver',
+          url: 'https://github.com/search?utf8=%E2%9C%93&q=brick+pop'
+        }
+      ]
+    },
+    {
+      title: 'react-loading-hoc',
+      subtitle: '2016 | web | javascript/es6, react',
+      description: 'React higher-order component used for abstracting out the loading state of a component to a prop. Used for wrapping logic to set an internal in-progress state for frontends that have a dedicated UI for an intermediate, loading state.',
+      links: [
+        {
+          text: 'npmjs.org',
+          url: 'https://www.npmjs.com/package/react-loading-hoc'
+        },
+        {
+          text: 'github',
+          url: 'https://github.com/LINKIWI/react-loading-hoc'
+        }
+      ]
+    },
+    {
+      title: 'pkg-deps',
+      subtitle: '2016 | command line | node',
+      description: 'A small command line utility for pretty-printing current package.json dependencies for Node projects',
+      links: [
+        {
+          text: 'npmjs.org',
+          url: 'https://www.npmjs.com/package/pkg-deps'
+        },
+        {
+          text: 'github',
+          url: 'https://github.com/LINKIWI/pkg-deps'
+        }
+      ]
+    },
+    {
       title: 'Detrail',
       subtitle: '2016 | command line | node',
       description: 'A flexible command line utility for fixing trailing whitespace in source files',
