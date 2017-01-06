@@ -36,7 +36,7 @@ export default class Projects extends React.Component {
   render() {
     return (
       <div>
-        <Helmet title={'experience - kevin lin - rice university'} />
+        <Helmet title={'projects - kevin lin - rice university'} />
         <Nav selectedNav={'projects'} />
         <div style={{
           maxHeight: '100vh',

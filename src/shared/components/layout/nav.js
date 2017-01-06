@@ -23,11 +23,13 @@ export default class Nav extends React.Component {
   colorForSelectedNav() {
     switch (this.props.selectedNav) {
       case 'experience':
-        return '#1D2936';
+        return '#1d2936';
       case 'projects':
-        return '#0D4023';
+        return '#192c21';
       case 'stats':
-        return '#4F1711';
+        return '#311818';
+      case 'contact':
+        return '#271b2b';
       default:
         return '#191919';
     }
@@ -88,6 +90,7 @@ export default class Nav extends React.Component {
             'experience',
             'projects',
             'stats',
+            'contact',
             'resume.pdf'
           ].map((link) => (
             <div
