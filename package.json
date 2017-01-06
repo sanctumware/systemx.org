@@ -11,6 +11,7 @@
     "build-css-watch": "mkdir -p dist && sass --watch --style compressed src/client/styles/main.scss:dist/main.css",
     "build-test": "mkdir -p dist-test && webpack --config config/webpack-test.js",
     "start": "node index.js",
+    "start-watch": "nodemon index.js",
     "lint": "eslint src test",
     "test": "npm run lint && npm run build-test && node dist-test | tap-spec"
   },
@@ -58,6 +59,7 @@
     "eslint": "^3.3.1",
     "eslint-config-uber-jsx": "^2.0.0",
     "eslint-plugin-react": "^6.1.2",
+    "nodemon": "^1.11.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.0",
     "webpack": "^1.13.1"
