@@ -3,7 +3,7 @@ import MediaQuery from 'react-responsive';
 import React from 'react';
 import xtend from 'xtend';
 
-import {DESKTOP_MEDIA_QUERY, COMPACT_MEDIA_QUERY, ULTRA_COMPACT_MEDIA_QUERY} from '../../util/media-query';
+import {DESKTOP_MEDIA_QUERY, COMPACT_MEDIA_QUERY} from '../../util/media-query';
 import DisplayUtil from '../../util/display';
 import Logo from './logo';
 
@@ -157,17 +157,6 @@ export default class Nav extends React.Component {
         </MediaQuery>
 
         <MediaQuery query={COMPACT_MEDIA_QUERY}>
-          <div style={{
-            backgroundColor: this.colorForSelectedNav(),
-            width: '100%',
-            padding: '24px 0'
-          }}>
-            {this.renderLogoBlock({display: 'inline-block', marginLeft: 36})}
-            {this.renderNavLinks(false, {display: 'inline-block'})}
-          </div>
-        </MediaQuery>
-
-        <MediaQuery query={ULTRA_COMPACT_MEDIA_QUERY}>
           <div style={{
             backgroundColor: this.colorForSelectedNav(),
             width: '100%',

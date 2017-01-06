@@ -11,7 +11,8 @@ export default class Contact extends React.Component {
     this.state = {showPGPKey: false};
   }
 
-  showPGPKey() {
+  showPGPKey(evt) {
+    evt.preventDefault();
     this.setState({showPGPKey: true});
   }
 
