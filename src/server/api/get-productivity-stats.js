@@ -1,10 +1,23 @@
 import async from 'async';
-import Trello from 'node-trello';
+import request from 'request';
 
 import secrets from '../../../config/secrets';
 
-const HOMEWORK_BOARD_ID = '160nUEdk';
-const client = new Trello(secrets.trelloAPIKey, secrets.trelloAPIToken);
+/**
+ * Query the Wekan API at a specified endpoint.
+ *
+ * @param {String} endpoint Endpoint URI, with leading forward slash.
+ * @param {Function} cb Callback function called with (err, response JSON)
+ */
+function wekanAPI(endpoint, cb) {
+  request.get({
+    url: `https://api.tasks.kevinlin.info${endpoint}`,
+    headers: {
+      'X-Kiwi-Auth': secrets.kiwiAuth
+    },
+    json: {}
+  }, (err, resp, body) => cb(err, body));
+}
 
 /**
  * Get productivity statistics.
@@ -13,35 +26,21 @@ const client = new Trello(secrets.trelloAPIKey, secrets.trelloAPIToken);
  * @param {Object} res Express response object
  */
 const getProductivityStats = (req, res) => {
-  // First, get all the ID of the backlog, in progress, and done lists
-  return client.get(`/1/boards/${HOMEWORK_BOARD_ID}/lists`, (boardErr, lists) => {
-    if (boardErr) {
-      return res.send(JSON.stringify({}));
+  return async.parallel({
+    boards: (finished) => wekanAPI('/boards', finished),
+    backlog: (finished) => wekanAPI('/list/zEddsbbHC6JJ8RXd9/cards', finished),
+    inProgress: (finished) => wekanAPI('/list/Ze2bp4gHsne4xndJ8/cards', finished),
+    done: (finished) => wekanAPI('/list/Tsy4B2gWYPenxHu6Z/cards', finished)
+  }, (err, results) => {
+    if (err) {
+      return res.send({});
     }
 
-    // Determine the list IDs associated with each stage
-    const backlogID = lists.find((list) => list.name.toLowerCase() === 'backlog').id;
-    const inProgressID = lists.find((list) => list.name.toLowerCase() === 'in progress').id;
-    const inReviewID = lists.find((list) => list.name.toLowerCase() === 'in review').id;
-    const doneID = lists.find((list) => list.name.toLowerCase() === 'done').id;
-
-    // Fetch the cards associated with each of the lists
-    return async.parallel({
-      backlog: (finished) => client.get(`/1/lists/${backlogID}/cards`, finished),
-      inProgress: (finished) => client.get(`/1/lists/${inProgressID}/cards`, finished),
-      inReview: (finished) => client.get(`/1/lists/${inReviewID}/cards`, finished),
-      done: (finished) => client.get(`/1/lists/${doneID}/cards`, finished)
-    }, (cardsErr, cards) => {
-      if (cardsErr) {
-        return res.send(JSON.stringify({}));
-      }
-
-      return res.end(JSON.stringify({
-        numBacklog: cards.backlog.length,
-        // For public display, combine "In Progress" and "In Review" into a single category
-        numInProgress: cards.inProgress.length + cards.inReview.length,
-        numDone: cards.done.length
-      }));
+    return res.send({
+      numBoards: results.boards.boards.length,
+      numBacklog: results.backlog.cards.length,
+      numInProgress: results.inProgress.cards.length,
+      numDone: results.done.cards.length
     });
   });
 };

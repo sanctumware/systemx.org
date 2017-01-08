@@ -35,7 +35,6 @@
     "humanize": "0.0.9",
     "just-last": "^1.1.23",
     "just-omit": "^1.0.1",
-    "node-trello": "^1.1.2",
     "pug": "^2.0.0-beta4",
     "raven": "^0.12.3",
     "react": "^15.3.0",

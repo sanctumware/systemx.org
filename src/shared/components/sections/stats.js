@@ -219,9 +219,16 @@ export default class Stats extends React.Component {
                   <p className="margin-tiny--bottom">
                     +
                     <span className="monospace bold">
+                      &nbsp;{productivityStats.numBoards || 0}&nbsp;
+                    </span>
+                    workboards on <a href="https://tasks.kevinlin.info">tasks.kevinlin.info</a>
+                  </p>
+                  <p className="margin-tiny--bottom">
+                    +
+                    <span className="monospace bold">
                       &nbsp;{productivityStats.numBacklog || 0}&nbsp;
                     </span>
-                    trello {productivityStats.numBacklog === 1 ? 'task' : 'tasks'} in backlog,
+                    {productivityStats.numBacklog === 1 ? 'task' : 'tasks'} in backlog,
                     <span className="monospace bold">
                       &nbsp;{productivityStats.numInProgress || 0}&nbsp;
                     </span>
