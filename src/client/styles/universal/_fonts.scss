@@ -1,35 +1,5 @@
 @import 'colors';
 
-@font-face {
-  font-family: 'montserrat-light';
-  src: url('/static/fonts/montserrat-light.otf');
-}
-
-@font-face {
-  font-family: 'montserrat-regular';
-  src: url('/static/fonts/montserrat-regular.otf');
-}
-
-@font-face {
-  font-family: 'montserrat-semibold';
-  src: url('/static/fonts/montserrat-semibold.otf');
-}
-
-@font-face {
-  font-family: 'montserrat-bold';
-  src: url('/static/fonts/montserrat-bold.otf');
-}
-
-@font-face {
-  font-family: 'inconsolata-regular';
-  src: url('/static/fonts/inconsolata-regular.ttf');
-}
-
-@font-face {
-  font-family: 'inconsolata-bold';
-  src: url('/static/fonts/inconsolata-bold.ttf');
-}
-
 .sans-serif {
   color: $gray-80;
   font-family: montserrat-regular, sans-serif;
