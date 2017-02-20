@@ -1,4 +1,5 @@
 import csjs from 'csjs-inject';
+import Favicon from 'react-favicon';
 import React from 'react';
 
 import fonts from '../../client/resources/fonts';
@@ -40,6 +41,10 @@ injectGlobalStyles();
 
 const AppRoot = ({children}) => (
   <div className="app-root">
+    <Favicon
+      animated={false}
+      url={['/static/img/favicon.png']}
+    />
     <Splash />
     {children}
   </div>
