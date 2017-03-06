@@ -24,8 +24,8 @@ export default class Projects extends React.Component {
         </p>
         {
           item.links.map((link) => (
-            <div>
-              <a key={`${link.text}_link`} href={link.url}>{link.text}</a>
+            <div key={`${link.text}_link`}>
+              <a href={link.url}>{link.text}</a>
             </div>
           ))
         }
