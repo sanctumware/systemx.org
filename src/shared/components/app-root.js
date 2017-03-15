@@ -3,7 +3,6 @@ import Favicon from 'react-favicon';
 import React from 'react';
 
 import fonts from '../../client/resources/fonts';
-import Splash from './layout/splash';
 
 /**
  * On client-side application initialization, inject global CSS styles into the document head.
@@ -45,7 +44,6 @@ const AppRoot = ({children}) => (
       animated={false}
       url={['/static/img/favicon.png']}
     />
-    <Splash />
     {children}
   </div>
 );
