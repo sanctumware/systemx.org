@@ -8,12 +8,24 @@ git fetch --all
 git checkout ${BRANCH}
 git reset --hard origin/${BRANCH}
 
+GIT_SHA=$(git sha)
+
 npm install
 npm run build
 
-pm2 stop kevin-lin-main || :
-pm2 start index.js --name kevin-lin-main
-pm2 show kevin-lin-main
+cp dist/index.html /tmp/kevin-lin-main-index
+
+git checkout gh-pages
+git reset --hard origin/gh-pages
+
+mv /tmp/kevin-lin-main-index index.html
+
+git add -u
+git status
+git commit -m "${BRANCH}:${GIT_SHA}"
+git push github HEAD
+
+git checkout ${BRANCH}
 
 allu \
     --skip-auth \
