@@ -1,9 +1,11 @@
+import Helmet from 'react-helmet';
 import React from 'react';
 
 import Logo from './layout/logo';
 
 const Minimal = () => (
   <div>
+    <Helmet title={'kevin lin - rice university'} />
     <div className="minimal-top bg-gray-90" style={{height: '50vh'}} />
 
     <div className="text-center margin--bottom" style={{marginTop: '-115px'}}>
