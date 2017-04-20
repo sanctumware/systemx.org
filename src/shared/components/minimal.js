@@ -24,6 +24,7 @@ const Minimal = () => (
       <span><a href="https://twitter.com/LINKIWI_" className="margin--right">twitter</a></span>
       <span><a href="https://blog.kevinlin.info" className="margin--right">blog</a></span>
       <span><a href="https://www.npmjs.com/~linkiwi" className="margin--right">npm</a></span>
+      <span><a href="https://keybase.io/linkiwi" className="margin--right">keybase</a></span>
       <span><a href="static/pdf/kevin-lin-resume.pdf">resume</a></span>
     </div>
   </div>

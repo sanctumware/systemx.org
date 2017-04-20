@@ -23,6 +23,7 @@ mv /tmp/kevin-lin-main-index index.html
 git add -u
 git status
 git commit -m "${BRANCH}:${GIT_SHA}"
+git push origin HEAD
 git push github HEAD
 
 git checkout ${BRANCH}
