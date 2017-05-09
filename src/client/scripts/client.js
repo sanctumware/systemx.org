@@ -1,6 +1,6 @@
 /* global document */
 
-import App from '../../shared';
-import {render} from 'react-dom';
+import App from '../app';
+import ReactDOM from 'react-dom';
 
-render(new App(), document.getElementById('app'));
+ReactDOM.render(new App(), document.querySelector('#app'));

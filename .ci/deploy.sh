@@ -13,7 +13,7 @@ GIT_SHA=$(git sha)
 npm install
 npm run build
 
-cp dist/index.html /tmp/kevin-lin-main-index
+cp src/client/static/dist/index.html /tmp/kevin-lin-main-index
 
 git checkout gh-pages
 git reset --hard origin/gh-pages

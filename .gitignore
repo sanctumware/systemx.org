@@ -1,6 +1,17 @@
-.idea
-.sass-cache
-node_modules
-dist*
+# IDE
+.idea/
+
+# Project artifacts
+src/client/static/dist/
+node_modules/
+.sass-cache/
 npm-debug.log
-config/secrets.js
+
+# Test artifacts
+coverage/
+
+# Database
+db/
+
+# Secrets
+.env

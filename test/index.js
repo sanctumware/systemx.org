@@ -1,12 +1,9 @@
-// Client
-import './client/test-template';
+require('babel-core/register');
 
-// Server
-import './server/api/test-get-misc-stats';
-import './server/api/test-get-private-contributions';
-import './server/api/test-get-public-contributions';
+// Noop on txt requires, namely for font resources
+require.extensions['.txt'] = () => {};
 
-// Shared
-import './shared/util/test-array';
-import './shared/util/test-display';
-import './shared/util/test-media-query';
+// This global is set via Webpack but is unavailable in a Node environment, so we'll stub it here
+config = {};  // eslint-disable-line no-undef
+
+module.exports = require('./main');

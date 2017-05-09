@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -ex
 
-gem install sass
 npm install
 
+npm run lint
 npm run build
-npm run test
+npm run cover
