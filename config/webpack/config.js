@@ -33,7 +33,12 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      config: JSON.stringify(clientConfig),
+      config: JSON.stringify({
+        ...clientConfig,
+        ...(isProduction && {
+          piwikEnabled: true
+        })
+      }),
       ...(isProduction && {
         'process.env': {
           'NODE_ENV': JSON.stringify('production')

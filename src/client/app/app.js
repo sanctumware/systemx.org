@@ -4,6 +4,7 @@
 import browserHistory from 'react-router/lib/browserHistory';
 import dottie from 'dottie';
 import {injectStyle} from 'styletron-utils';
+import PiwikReactRouter from 'piwik-react-router';
 import Raven from 'raven-js';
 import React from 'react';
 import Router from 'react-router/lib/Router';
@@ -14,6 +15,12 @@ import routes from './routes';
 
 // Client-side Sentry initialization
 Raven.config && Raven.config(dottie.get(config, 'sentry.dsn')).install();
+
+// Piwik initialization
+const piwik = config.piwikEnabled && PiwikReactRouter({
+  url: 'https://analytics.internal.kevinlin.info',
+  siteId: 1
+});
 
 // Styletron initialization
 const stylesheet = document.createElement('style');
@@ -29,7 +36,7 @@ export const style = (styleObject) => injectStyle(styletron, styleObject);
  */
 const App = () => (
   <StyletronProvider styletron={styletron}>
-    <Router history={browserHistory}>
+    <Router history={piwik ? piwik.connectToHistory(browserHistory) : browserHistory}>
       {routes}
     </Router>
   </StyletronProvider>
