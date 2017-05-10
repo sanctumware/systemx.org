@@ -10,7 +10,7 @@ git reset --hard origin/${BRANCH}
 
 GIT_SHA=$(git sha)
 
-npm install
+npm install --production=false
 npm run build
 
 cp src/client/static/dist/index.html /tmp/kevin-lin-main-index
