@@ -67,7 +67,7 @@ const Header = ({win}) => (
 
     <Primary>
       rising senior&nbsp;
-      <Link href="http://www.rice.edu/">
+      <Link to="/education">
         <PrimaryInline color bold>rice university</PrimaryInline>
         &nbsp;/ eecs
       </Link>
