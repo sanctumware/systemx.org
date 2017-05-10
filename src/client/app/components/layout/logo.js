@@ -34,7 +34,7 @@ const StyledWordmark = styled('span', {
  * @constructor
  */
 const Logo = ({scale = 1, color = 'gray10'}) => (
-  <div>
+  <span>
     <StyledLogo scale={scale} color={color} />
     <StyledWordmark>
       <Margin left>
@@ -43,7 +43,7 @@ const Logo = ({scale = 1, color = 'gray10'}) => (
         </Primary>
       </Margin>
     </StyledWordmark>
-  </div>
+  </span>
 );
 
 export default Logo;
