@@ -26,7 +26,9 @@ const Container = ({children}) => (
       </Home>
     </Margin>
 
-    {children}
+    <div style={{maxWidth: '500px'}}>
+      {children}
+    </div>
   </Window>
 );
 

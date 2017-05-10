@@ -1,10 +1,9 @@
 import React from 'react';
-import {styled} from 'styletron-react';
 import {withWindowState} from 'react-window-state';
 
 import {sizes} from '../../../styles/fonts';
 import {Margin} from '../../../styles/margin';
-import {Primary, PrimaryInline, primaryFontStyle} from '../../../styles/fonts';
+import {Primary, PrimaryInline} from '../../../styles/fonts';
 
 import Link from '../ui/link';
 
@@ -23,14 +22,6 @@ const aboutTextSize = (width) => {
 };
 
 /**
- * Styled about text element.
- */
-const AboutText = styled('p', ({width}) => ({
-  maxWidth: '500px',
-  ...primaryFontStyle(aboutTextSize(width), 'gray70')
-}));
-
-/**
  * Primary header with about text, work experience, and education.
  *
  * @constructor
@@ -38,9 +29,9 @@ const AboutText = styled('p', ({width}) => ({
 const Header = ({win}) => (
   <div>
     <Margin bottom>
-      <AboutText width={win.width}>
+      <Primary color="gray70" size={aboutTextSize(win.width)}>
         i build products and infrastructure for the web.
-      </AboutText>
+      </Primary>
     </Margin>
 
     <Margin size="tiny" bottom>
