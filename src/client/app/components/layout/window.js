@@ -1,3 +1,5 @@
+/* global document */
+
 import React from 'react';
 import {withWindowState} from 'react-window-state';
 
@@ -33,8 +35,8 @@ const verticalMarginSize = (width) => {
  * @constructor
  */
 const Window = ({win, children}) => (
-  <Margin size={verticalMarginSize(win.width)} top bottom>
-    <Margin size={sideMarginSize(win.width)} left right>
+  <Margin size={verticalMarginSize(win.width || document.body.clientWidth)} top bottom>
+    <Margin size={sideMarginSize(win.width || document.body.clientWidth)} left right>
       {children}
     </Margin>
   </Margin>
