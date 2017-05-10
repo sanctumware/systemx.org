@@ -13,7 +13,7 @@ import {transition} from '../../../styles/general';
  * @constructor
  */
 const Link = (props) => {
-  const {href, children} = props;
+  const {href, style, children} = props;
 
   const A = styled(href ? 'a' : RouterLink, {
     color: colors.primary,
@@ -30,7 +30,8 @@ const Link = (props) => {
       borderBottom: `2px solid ${colors.gray80}`,
       color: colors.gray80
     },
-    ...transition()
+    ...transition(),
+    ...style
   });
 
   return (
