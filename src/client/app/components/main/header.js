@@ -36,8 +36,8 @@ const Header = ({win}) => (
 
     <Margin size="tiny" bottom>
       <Primary>
-        currently engineering&nbsp;
-        <Link href="https://engineering.pinterest.com/">
+        currently&nbsp;
+        <Link to="/experience#pinterest">
           <PrimaryInline color bold>pinterest</PrimaryInline> / product eng
         </Link>
       </Primary>
@@ -46,11 +46,11 @@ const Header = ({win}) => (
     <Margin size="tiny" bottom>
       <Primary>
         previously&nbsp;
-        <Link href="https://eng.uber.com/">
+        <Link to="/experience#uber">
           <PrimaryInline color bold>uber</PrimaryInline> / dev infrastructure
         </Link>
         ,&nbsp;
-        <Link href="https://www.yelp.com/engineering">
+        <Link to="/experience#yelp">
           <PrimaryInline color bold>yelp</PrimaryInline> / web frontend
         </Link>
       </Primary>

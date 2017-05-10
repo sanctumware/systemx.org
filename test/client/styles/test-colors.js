@@ -22,7 +22,7 @@ test('BackgroundColor and Color wrapper components', (t) => {
   const backgroundColor = mount(
     <BackgroundColor />
   );
-  t.equal(backgroundColor.find('div').length, 1, 'BackgroundColor wraps div tag');
+  t.equal(backgroundColor.find('span').length, 1, 'BackgroundColor wraps span tag');
 
   t.end();
 });

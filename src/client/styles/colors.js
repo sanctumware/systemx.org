@@ -43,7 +43,7 @@ export const colors = {...gray, ...others, ...primary};
 /**
  * Component specifying a background color.
  */
-export const BackgroundColor = styled('div', ({color}) => ({
+export const BackgroundColor = styled('span', ({color}) => ({
   backgroundColor: colors[color] || color
 }));
 
