@@ -5,6 +5,6 @@
  * @param {String} property The property the transition should affect.
  * @param {String} easing Type of easing to apply.
  */
-export const transition = (duration = '0.15s', property = 'all', easing = 'ease') => ({
+export const transition = (duration = '0.07s', property = 'all', easing = 'ease') => ({
   transition: `${duration} ${property} ${easing}`
 });

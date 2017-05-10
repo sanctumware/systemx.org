@@ -8,7 +8,7 @@ import Twitter from 'react-icons/lib/fa/twitter';
 
 import Link from '../ui/link';
 import {Margin, MarginInline} from '../../../styles/margin';
-import {Secondary} from '../../../styles/fonts';
+import {SecondaryInline} from '../../../styles/fonts';
 
 /**
  * Single external link with an icon.
@@ -19,15 +19,12 @@ import {Secondary} from '../../../styles/fonts';
  * @constructor
  */
 const ExternalLink = ({icon, text, href}) => (
-  <Margin size="small" bottom>
-    <Secondary bold>
-      <Link href={href}>
-        <MarginInline size="small" right>
-          {icon}
-        </MarginInline>
-        {text}
-      </Link>
-    </Secondary>
+  <Margin size="tiny" bottom>
+    <Link href={href}>
+      <SecondaryInline color bold>
+        {icon} <MarginInline size="tiny" left>{text}</MarginInline>
+      </SecondaryInline>
+    </Link>
   </Margin>
 );
 
