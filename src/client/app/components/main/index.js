@@ -1,11 +1,11 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-import Container from './container';
+import Container from '../layout/container';
 import ExternalLinks from './external-links';
 import Header from './header';
-import Logo from './logo';
-import {Margin} from '../../styles/margin';
+import Logo from '../layout/logo';
+import {Margin} from '../../../styles/margin';
 
 /**
  * Main application component.

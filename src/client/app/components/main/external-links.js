@@ -6,9 +6,9 @@ import Key from 'react-icons/lib/md/vpn-key';
 import React from 'react';
 import Twitter from 'react-icons/lib/fa/twitter';
 
-import Link from './ui/link';
-import {Margin, MarginInline} from '../../styles/margin';
-import {Secondary} from '../../styles/fonts';
+import Link from '../ui/link';
+import {Margin, MarginInline} from '../../../styles/margin';
+import {Secondary} from '../../../styles/fonts';
 
 /**
  * Single external link with an icon.

@@ -2,11 +2,11 @@ import React from 'react';
 import {styled} from 'styletron-react';
 import {withWindowState} from 'react-window-state';
 
-import {sizes} from '../../styles/fonts';
-import {Margin} from '../../styles/margin';
-import {Primary, PrimaryInline, primaryFontStyle} from '../../styles/fonts';
+import {sizes} from '../../../styles/fonts';
+import {Margin} from '../../../styles/margin';
+import {Primary, PrimaryInline, primaryFontStyle} from '../../../styles/fonts';
 
-import Link from './ui/link';
+import Link from '../ui/link';
 
 /**
  * Determine the size of the primary about text.

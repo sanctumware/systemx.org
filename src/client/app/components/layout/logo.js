@@ -1,9 +1,9 @@
 import React from 'react';
 import {styled} from 'styletron-react';
 
-import {colors} from '../../styles/colors';
-import {Margin} from '../../styles/margin';
-import {Primary} from '../../styles/fonts';
+import {colors} from '../../../styles/colors';
+import {Margin} from '../../../styles/margin';
+import {Primary} from '../../../styles/fonts';
 
 const BASE_HEIGHT = 35;
 const BASE_WIDTH = 15;

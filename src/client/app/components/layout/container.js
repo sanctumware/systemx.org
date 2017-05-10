@@ -1,8 +1,8 @@
 import React from 'react';
 import {withWindowState} from 'react-window-state';
 
-import {Margin} from '../../styles/margin';
-import {spacing} from '../../styles/margin';
+import {Margin} from '../../../styles/margin';
+import {spacing} from '../../../styles/margin';
 
 const sideMarginSize = (width) => {
   if (width < 350) {
