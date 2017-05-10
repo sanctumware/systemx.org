@@ -19,10 +19,11 @@ git checkout gh-pages
 git reset --hard origin/gh-pages
 
 mv /tmp/kevin-lin-main-index index.html
+cp index.html 404.html
 
 git add -u
 git status
-git commit -m "${BRANCH}:${GIT_SHA}"
+git commit -m "${BRANCH}:${GIT_SHA}" || :
 git push origin HEAD
 git push github HEAD
 
