@@ -15,8 +15,8 @@
     "lint": "eslint src test config",
     "test": "node test | tap-spec",
     "test-watch": "nodemon test | tap-spec",
-    "cover": "istanbul cover test --print detail",
-    "coveralls": "istanbul cover test --print detail && cat coverage/lcov.info | coveralls"
+    "cover": "istanbul cover test",
+    "coveralls": "npm run cover && cat coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
