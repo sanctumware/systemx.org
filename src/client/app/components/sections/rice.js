@@ -43,7 +43,7 @@ const CoursesTable = ({name, courses}) => (
 );
 
 /**
- * Component for a listing of coureswork.
+ * Component for a listing of coursework.
  *
  * @constructor
  */
