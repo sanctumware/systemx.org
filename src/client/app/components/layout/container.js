@@ -7,8 +7,12 @@ import Window from './window';
 
 import browser from '../../util/browser';
 
-const Home = styled('span', {
+export const Home = styled('span', {
   cursor: 'pointer'
+});
+
+export const Children = styled('div', {
+  maxWidth: '500px'
 });
 
 /**
@@ -26,9 +30,9 @@ const Container = ({children}) => (
       </Home>
     </Margin>
 
-    <div style={{maxWidth: '500px'}}>
+    <Children>
       {children}
-    </div>
+    </Children>
   </Window>
 );
 

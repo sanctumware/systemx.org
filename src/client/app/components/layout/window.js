@@ -34,7 +34,7 @@ const verticalMarginSize = (width) => {
  * @param {XML} children All enclosed children.
  * @constructor
  */
-const Window = ({win, children}) => (
+export const Window = ({win, children}) => (
   <Margin size={verticalMarginSize(win.width || document.body.clientWidth)} top bottom>
     <Margin size={sideMarginSize(win.width || document.body.clientWidth)} left right>
       {children}

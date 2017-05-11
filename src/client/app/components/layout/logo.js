@@ -12,7 +12,7 @@ const WORDMARK_TEXT = 'Kevin Lin';
 /**
  * Logo element.
  */
-const StyledLogo = styled('div', ({scale, color}) => ({
+export const StyledLogo = styled('div', ({scale, color}) => ({
   backgroundColor: colors[color] || color,
   display: 'inline-block',
   height: `${BASE_HEIGHT * scale}px`,
@@ -22,7 +22,7 @@ const StyledLogo = styled('div', ({scale, color}) => ({
 /**
  * Wordmark accompanying logo element.
  */
-const StyledWordmark = styled('span', {
+export const StyledWordmark = styled('span', {
   display: 'inline-block'
 });
 
