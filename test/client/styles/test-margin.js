@@ -1,6 +1,8 @@
+import React from 'react';
 import test from 'tape';
 
-import {spacing, marginStyle} from '../../../src/client/styles/margin';
+import mountWithStyletron from '../util/mount-with-styletron';
+import {spacing, marginStyle, Margin, MarginInline} from '../../../src/client/styles/margin';
 
 test('Expected spacing definitions', (t) => {
   t.ok(spacing.default, 'Default size is present');
@@ -20,6 +22,28 @@ test('Margin style factory function', (t) => {
   t.deepEqual(marginStyle('default', ['top', 'left']), {
     margin: `${spacing.default} 0 0 ${spacing.default}`
   }, 'Margin style object is correct for multiple dimensions');
+
+  t.end();
+});
+
+test('Margin element', (t) => {
+  const margin = mountWithStyletron(
+    <Margin bottom />
+  );
+
+  t.equal(margin.find('div').length, 1, 'Margin contains div element');
+  t.equal(margin.find('span').length, 0, 'Margin does not contain span element');
+
+  t.end();
+});
+
+test('MarginInline element', (t) => {
+  const margin = mountWithStyletron(
+    <MarginInline bottom />
+  );
+
+  t.equal(margin.find('div').length, 0, 'Margin does not contain div element');
+  t.equal(margin.find('span').length, 1, 'Margin contains span element');
 
   t.end();
 });

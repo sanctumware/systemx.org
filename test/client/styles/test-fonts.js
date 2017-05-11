@@ -1,6 +1,6 @@
 import test from 'tape';
 
-import {sizes, primaryFontStyle} from '../../../src/client/styles/fonts';
+import {sizes, primaryFontStyle, secondaryFontStyle} from '../../../src/client/styles/fonts';
 
 test('Expected size definitions', (t) => {
   t.ok(sizes.alpha, 'Alpha size is present');
@@ -15,12 +15,22 @@ test('Expected size definitions', (t) => {
   t.end();
 });
 
-test('Font style factory function', (t) => {
+test('Primary font style factory function', (t) => {
   t.deepEqual(primaryFontStyle('beta', '#ccc', 'bold'), {
     fontFamily: 'montserrat--regular',
     fontSize: sizes.beta,
     color: '#ccc'
-  }, 'Font style object is correct');
+  }, 'Primary font style object is correct');
+
+  t.end();
+});
+
+test('Secondary font style factory function', (t) => {
+  t.deepEqual(secondaryFontStyle('beta', '#ccc', 'bold'), {
+    fontFamily: 'inconsolata--bold',
+    fontSize: sizes.beta,
+    color: '#ccc'
+  }, 'Secondary font style object is correct');
 
   t.end();
 });

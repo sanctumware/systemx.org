@@ -16,8 +16,6 @@ export const sizes = {
   lambda: '10px'
 };
 
-// TODO pull default size, color into constant here
-
 /**
  * Parameterized factory function for generating style objects with the primary font.
  *
@@ -38,7 +36,7 @@ export const primaryFontStyle = (size = DEFAULT_SIZE, color = DEFAULT_COLOR, bol
  * @param {String} color Name of the color, or a literal hex color ode.
  * @param {Boolean|String} bold True to use the bold font family; false otherwise.
  */
-export const secondaryFontStyle = (size = DEFAULT_SIZE, color = 'gray80', bold = false) => ({
+export const secondaryFontStyle = (size = DEFAULT_SIZE, color = DEFAULT_COLOR, bold = false) => ({
   fontFamily: bold ? 'inconsolata--bold' : 'inconsolata--regular',
   fontSize: sizes[size] || size,
   color: colors[color] || color
