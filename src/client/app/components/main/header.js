@@ -1,3 +1,5 @@
+/* global document */
+
 import React from 'react';
 import {withWindowState} from 'react-window-state';
 
@@ -29,7 +31,7 @@ const aboutTextSize = (width) => {
 const Header = ({win}) => (
   <div>
     <Margin bottom>
-      <Primary color="gray70" size={aboutTextSize(win.width)}>
+      <Primary color="gray70" size={aboutTextSize(win.width || document.body.clientWidth)}>
         i build products and infrastructure for the web.
       </Primary>
     </Margin>
