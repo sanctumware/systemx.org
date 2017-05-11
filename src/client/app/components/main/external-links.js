@@ -18,7 +18,7 @@ import {SecondaryInline} from '../../../styles/fonts';
  * @param {String} href Outgoing URL for this link.
  * @constructor
  */
-const ExternalLink = ({icon, text, href}) => (
+export const ExternalLink = ({icon, text, href}) => (
   <Margin size="tiny" bottom>
     <Link href={href}>
       <SecondaryInline color bold>
