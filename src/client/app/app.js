@@ -1,6 +1,7 @@
 /* global config, document */
 /* eslint-disable no-unused-expressions */
 
+import applyRouterMiddleware from 'react-router/lib/applyRouterMiddleware';
 import browserHistory from 'react-router/lib/browserHistory';
 import dottie from 'dottie';
 import {injectStyle} from 'styletron-utils';
@@ -10,6 +11,7 @@ import React from 'react';
 import Router from 'react-router/lib/Router';
 import Styletron from 'styletron-client';
 import {StyletronProvider} from 'styletron-react';
+import useScroll from 'react-router-scroll/lib/useScroll';
 
 import routes from './routes';
 
@@ -36,7 +38,10 @@ export const style = (styleObject) => injectStyle(styletron, styleObject);
  */
 const App = () => (
   <StyletronProvider styletron={styletron}>
-    <Router history={piwik ? piwik.connectToHistory(browserHistory) : browserHistory}>
+    <Router
+      history={piwik ? piwik.connectToHistory(browserHistory) : browserHistory}
+      render={applyRouterMiddleware(useScroll())}
+    >
       {routes}
     </Router>
   </StyletronProvider>

@@ -49,6 +49,7 @@
     "react-helmet": "^5.0.3",
     "react-icons": "^2.2.5",
     "react-router": "^2.6.1",
+    "react-router-scroll": "^0.4.2",
     "react-window-state": "^0.2.0",
     "styletron": "^2.5.7",
     "styletron-client": "^2.5.1",

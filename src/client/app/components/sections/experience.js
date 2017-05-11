@@ -25,6 +25,7 @@ const ExperienceItem = ({title, subtitle, location, details}) => (
     <Margin size="small" bottom>
       <Margin size="tiny" bottom>
         <BackgroundColor
+          id={title.toLowerCase()}
           color={
             window.location.hash.toLowerCase() === `#${title.toLowerCase()}` && colors.primaryLight
           }
