@@ -1,6 +1,7 @@
 /* global document */
 
-import App from '../app';
 import ReactDOM from 'react-dom';
+
+import App from '../app';
 
 ReactDOM.render(new App(), document.querySelector('#app'));

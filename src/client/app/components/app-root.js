@@ -25,13 +25,13 @@ function injectGlobalStyles() {
   csjs`
   @font-face {
     font-family: 'montserrat--regular';
-    src: url(data:7application/x-font-otf;base64,${fonts.montserratRegular}),
+    src: url(data:application/x-font-otf;base64,${fonts.montserratRegular}),
          url('/static/fonts/montserrat-regular.otf');
   }
 
   @font-face {
     font-family: 'montserrat--ultra-light';
-    src: url(data:7application/x-font-otf;base64,${fonts.montserratUltraLight}),
+    src: url(data:application/x-font-otf;base64,${fonts.montserratUltraLight}),
          url('/static/fonts/montserrat-ultra-light.otf');
   }
 
