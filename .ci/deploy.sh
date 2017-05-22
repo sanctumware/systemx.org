@@ -13,12 +13,14 @@ GIT_SHA=$(git sha)
 npm install --production=false
 npm run build
 
-cp src/client/static/dist/index.html /tmp/kevin-lin-main-index
+cp -r src/client/static /tmp/kevin-lin-main-static
 
 git checkout gh-pages
 git reset --hard origin/gh-pages
 
-mv /tmp/kevin-lin-main-index index.html
+rm -rf static
+mv /tmp/kevin-lin-main-static static
+mv static/dist/index.html index.html
 cp index.html 404.html
 
 git add -u
