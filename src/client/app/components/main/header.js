@@ -38,7 +38,7 @@ const Header = ({win}) => (
 
     <Margin size="tiny" bottom>
       <Primary>
-        currently&nbsp;
+        most recently&nbsp;
         <Link to="/experience#pinterest">
           <PrimaryInline color bold>pinterest</PrimaryInline> / product eng
         </Link>
@@ -59,7 +59,7 @@ const Header = ({win}) => (
     </Margin>
 
     <Primary>
-      rising senior&nbsp;
+      senior&nbsp;
       <Link to="/education">
         <PrimaryInline color bold>rice university</PrimaryInline>
         &nbsp;/ eecs

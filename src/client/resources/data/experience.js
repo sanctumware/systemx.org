@@ -6,7 +6,9 @@ export default [
     subtitle: 'Product Action',
     location: 'Software Engineering Intern / San Francisco',
     details: [
-      'i\'m thrilled to join pinterest engineering this summer!'
+      'expanded backend functionality within a graph-based storage system to support the next major iteration of an existing product, shop the look',
+      'built a react/redux-based web interface to allow advertising partners to tag their products in pins on pinterest',
+      'maintained a frontend interface and supporting data ingestion pipelines for external human curators to verify algorithmically generated product tags on pins'
     ]
   },
   {
