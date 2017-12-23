@@ -36,13 +36,14 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'mv src/client/static/dist /tmp/kevin-lin-main-dist'
                 sh 'mv src/client/static /tmp/kevin-lin-main-static'
-                sh 'mv src/client/static/dist/index.html /tmp/kevin-lin-main'
                 sh 'git fetch --all'
                 sh 'git checkout gh-pages'
                 sh 'git reset --hard origin/gh-pages'
+                sh 'rm -rf static'
                 sh 'mv /tmp/kevin-lin-main-static static'
-                sh 'mv /tmp/kevin-lin-main index.html'
+                sh 'mv /tmp/kevin-lin-main-dist/index.html index.html'
                 sh 'cp index.html 404.html'
                 sh 'git add .'
                 sh 'git status'
