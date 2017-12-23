@@ -1,3 +1,4 @@
+import fs from 'fs';
 import sinon from 'sinon';
 import test from 'tape';
 
@@ -14,11 +15,15 @@ test('Handler serves client template', (t) => {
     send: sinon.spy()
   };
 
+  const mockReadFileSync = sinon.stub(fs, 'readFileSync', () => 'html');
+
   handler(mockReq, mockRes);
 
   const html = mockRes.send.getCalls()[0].args[0].toString();
 
-  t.ok(html.startsWith('<!DOCTYPE html>'), 'HTML file contents are sent in response');
+  t.ok(mockReadFileSync.called, 'File is read');
+  t.ok(html.startsWith('html'), 'HTML file contents are sent in response');
 
+  fs.readFileSync.restore();
   t.end();
 });

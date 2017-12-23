@@ -1,7 +1,5 @@
 import fs from 'fs';
 
-const index = fs.readFileSync('src/client/static/dist/index.html');
-
 /**
  * Main handler for serving client views.
  *
@@ -9,6 +7,7 @@ const index = fs.readFileSync('src/client/static/dist/index.html');
  * @param {Object} res Express response object
  */
 function handler(req, res) {
+  const index = fs.readFileSync('src/client/static/dist/index.html');
   res.setHeader('content-type', 'text/html');
   return res.send(index);
 }
