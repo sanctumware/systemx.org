@@ -1,0 +1,63 @@
+pipeline {
+    agent {
+        dockerfile {
+            dir '.ci'
+            args '-v $HOME/.ssh:/home/jenkins/.ssh:ro'
+        }
+    }
+
+    stages {
+        stage('Install') {
+            steps {
+                sh 'npm-s3 install'
+            }
+        }
+        stage('Build') {
+            parallel {
+                stage('Build') {
+                    environment {
+                        NODE_ENV = 'production'
+                    }
+                    steps {
+                        sh 'npm run build'
+                    }
+                }
+                stage('Lint') {
+                    steps {
+                        sh 'npm run lint'
+                    }
+                }
+                stage('Unit') {
+                    steps {
+                        sh 'npm run test'
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'mv src/client/static /tmp/kevin-lin-main-static'
+                sh 'mv src/client/static/dist/index.html /tmp/kevin-lin-main'
+                sh 'git fetch --all'
+                sh 'git checkout gh-pages'
+                sh 'git reset --hard origin/gh-pages'
+                sh 'mv /tmp/kevin-lin-main-static static'
+                sh 'mv /tmp/kevin-lin-main index.html'
+                sh 'cp index.html 404.html'
+                sh 'git add .'
+                sh 'git status'
+                sh "git commit -m ${GIT_BRANCH}:${GIT_COMMIT} || :"
+                sh 'git remote add github git@github.com:LINKIWI/kevinlin.info.git'
+                sh 'git push origin HEAD'
+                sh 'git push github HEAD'
+            }
+        }
+    }
+
+    post {
+        always {
+            archive 'src/client/static/dist/index.html'
+            deleteDir()
+        }
+    }
+}
