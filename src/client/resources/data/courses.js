@@ -1,6 +1,18 @@
 export default {
   ee: [
     {
+      code: 'elec 526',
+      title: '[in progress] high performance computer architecture'
+    },
+    {
+      code: 'elec 513',
+      title: '[in progress] complexity in modern systems'
+    },
+    {
+      code: 'elec 433',
+      title: '[in progress] architecture for wireless communications'
+    },
+    {
       code: 'elec 494',
       title: '[in progress] senior capstone design'
     },
@@ -55,16 +67,12 @@ export default {
   ],
   cs: [
     {
-      code: 'comp 431',
-      title: '[in progress] web development'
+      code: 'comp 491',
+      title: '[in progress] computer science teaching'
     },
     {
       code: 'comp 413',
-      title: '[in progress] distributed program construction'
-    },
-    {
-      code: 'comp 382',
-      title: '[in progress] reasoning about algorithms'
+      title: 'distributed program construction'
     },
     {
       code: 'comp 421',
@@ -87,6 +95,10 @@ export default {
       title: 'computer networks'
     },
     {
+      code: 'comp 431',
+      title: 'web development'
+    },
+    {
       code: 'comp 311',
       title: 'functional programming'
     },
@@ -101,6 +113,10 @@ export default {
     {
       code: 'comp 321',
       title: 'introduction to computer systems'
+    },
+    {
+      code: 'comp 382',
+      title: 'reasoning about algorithms'
     },
     {
       code: 'comp 215',
