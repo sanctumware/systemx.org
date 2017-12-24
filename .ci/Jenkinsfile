@@ -12,7 +12,7 @@ pipeline {
                 sh 'npm-s3 install'
             }
         }
-        stage('Build') {
+        stage('Test') {
             parallel {
                 stage('Build') {
                     environment {

@@ -20,7 +20,7 @@ Raven.config && Raven.config(dottie.get(config, 'sentry.dsn')).install();
 
 // Piwik initialization
 const piwik = config.piwikEnabled && PiwikReactRouter({
-  url: 'https://analytics.internal.kevinlin.info',
+  url: 'https://analytics.kevinlin.info',
   siteId: 1,
   clientTrackerName: 'client',
   serverTrackerName: 'server'
