@@ -57,7 +57,7 @@ pipeline {
 
     post {
         always {
-            archive 'src/client/static/dist/index.html'
+            archive 'index.html'
             deleteDir()
         }
     }
